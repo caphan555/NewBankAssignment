@@ -29,6 +29,12 @@ import utilities.CreateUniqueNumber;
 
 public class BankTest {
 	private final static String SUCCESS = "success";
+	private final static String DEPOSIT = "Deposit";
+	private final static String WITHDRAW= "Withdraw";
+	private final static String OPENING_NEW_ACCOUNT = "Opening a new account.";
+	private final static String DEBIT = "debit";
+	private final static String CREDIT = "credit";
+	private final static String TEST_USERNAME = "John";
 	
 	@Test
 	public void testCreateUserSuccess() {
@@ -43,9 +49,9 @@ public class BankTest {
 
 		IBankService bs = new BankService(arp, trp, urp);
 
-		String result = bs.createUser("John");
+		String result = bs.createUser(TEST_USERNAME);
 
-		assertEquals("success", result);
+		assertEquals(SUCCESS, result);
 	}
 
 	@Test
@@ -81,12 +87,6 @@ public class BankTest {
 			IBankService bs = new BankService(arp, trp, urp);
 
 			bs.createUser(null);
-			// int answer = 1/0;
-		
-
-		// String str = null;
-		// str.toUpperCase();
-
 	}
 
 	@Test
@@ -104,7 +104,7 @@ public class BankTest {
 
 			IBankService bs = new BankService(arp, trp, urp);
 
-			bs.createUser("John");
+			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
 
@@ -121,14 +121,14 @@ public class BankTest {
 			cal.set(Calendar.YEAR, 2017);
 			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction("Opening a new account.", "credit", 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
 					newAccount.getBalance() + 500.00);
 			newAccount.setBalance(newTransaction.getBalance());
 			newAccount.getTransactions().add(newTransaction);
 
 			String createAccountResult = bs.createAccount(newAccount);
 
-			assertEquals("success", createAccountResult);
+			assertEquals(SUCCESS, createAccountResult);
 		
 	}
 
@@ -168,7 +168,7 @@ public class BankTest {
 
 			IBankService bs = new BankService(arp, trp, urp);
 
-			bs.createUser("John");
+			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
 
@@ -185,7 +185,7 @@ public class BankTest {
 			cal.set(Calendar.YEAR, 2017);
 			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction("Opening a new account.", "credit", 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
 					newAccount.getBalance() + 10.00);
 			newAccount.setBalance(newTransaction.getBalance());
 			newAccount.getTransactions().add(newTransaction);
@@ -211,7 +211,7 @@ public class BankTest {
 
 			IBankService bs = new BankService(arp, trp, urp);
 
-			bs.createUser("John");
+			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
 
@@ -228,7 +228,7 @@ public class BankTest {
 			cal.set(Calendar.YEAR, 2017);
 			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction("Opening a new account.", "credit", 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
 					newAccount.getBalance() + 500.00);
 			newAccount.setBalance(newTransaction.getBalance());
 			newAccount.getTransactions().add(newTransaction);
@@ -238,7 +238,7 @@ public class BankTest {
 			
 			String balanceResult;
 			if(500.00 == retrievedAccount.getBalance()) {
-				balanceResult = "success";
+				balanceResult = SUCCESS;
 			} else {
 				balanceResult = "failure";
 			}
@@ -261,7 +261,7 @@ public class BankTest {
 
 			IBankService bs = new BankService(arp, trp, urp);
 
-			bs.createUser("John");
+			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
 
@@ -278,7 +278,7 @@ public class BankTest {
 			cal.set(Calendar.YEAR, 2017);
 			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction("Opening a new account.", "credit", 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
 					newAccount.getBalance() + 500.00);
 			newAccount.setBalance(newTransaction.getBalance());
 			newAccount.getTransactions().add(newTransaction);
@@ -304,7 +304,7 @@ public class BankTest {
 
 			IBankService bs = new BankService(arp, trp, urp);
 
-			bs.createUser("John");
+			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
 
@@ -321,7 +321,7 @@ public class BankTest {
 			cal.set(Calendar.YEAR, 2017);
 			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction("Opening a new account.", "credit", 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
 					newAccount.getBalance() + 500.00);
 			
 			newAccount.setBalance(newTransaction.getBalance());
@@ -358,7 +358,7 @@ public class BankTest {
 
 			IBankService bs = new BankService(arp, trp, urp);
 
-			bs.createUser("John");
+			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
 
@@ -403,7 +403,7 @@ public class BankTest {
 
 			IBankService bs = new BankService(arp, trp, urp);
 
-			bs.createUser("John");
+			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
 
@@ -420,7 +420,7 @@ public class BankTest {
 			cal.set(Calendar.YEAR, 2017);
 			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction("Opening a new account.", "credit", 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
 					newAccount.getBalance() + 500.00);
 			
 			newAccount.setBalance(newTransaction.getBalance());
@@ -449,7 +449,7 @@ public class BankTest {
 
 			IBankService bs = new BankService(arp, trp, urp);
 
-			bs.createUser("John");
+			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
 
@@ -466,7 +466,7 @@ public class BankTest {
 			cal.set(Calendar.YEAR, 2017);
 			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction("Opening a new account.", "credit", 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
 					newAccount.getBalance() + 500.00);
 			
 			newAccount.setBalance(newTransaction.getBalance());
@@ -504,7 +504,7 @@ public class BankTest {
 
 			IBankService bs = new BankService(arp, trp, urp);
 
-			bs.createUser("John");
+			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
 
@@ -521,7 +521,7 @@ public class BankTest {
 			cal.set(Calendar.YEAR, 2017);
 			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction("Opening a new account.", "credit", 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
 					newAccount.getBalance() + 500.00);
 			
 			newAccount.setBalance(newTransaction.getBalance());
@@ -551,7 +551,7 @@ public class BankTest {
 
 			IBankService bs = new BankService(arp, trp, urp);
 
-			bs.createUser("John");
+			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
 
@@ -568,7 +568,7 @@ public class BankTest {
 			cal.set(Calendar.YEAR, 2017);
 			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction("Opening a new account.", "credit", 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
 					newAccount.getBalance() + 500.00);
 			
 			newAccount.setBalance(newTransaction.getBalance());
@@ -598,7 +598,7 @@ public class BankTest {
 
 			IBankService bs = new BankService(arp, trp, urp);
 
-			bs.createUser("John");
+			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
 
@@ -615,7 +615,7 @@ public class BankTest {
 			cal.set(Calendar.YEAR, 2017);
 			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction("Opening a new account.", "credit", 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
 					newAccount.getBalance() + 500.00);
 			
 			newAccount.setBalance(newTransaction.getBalance());
@@ -644,7 +644,7 @@ public class BankTest {
 
 			IBankService bs = new BankService(arp, trp, urp);
 
-			bs.createUser("John");
+			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
 
@@ -661,7 +661,7 @@ public class BankTest {
 			cal.set(Calendar.YEAR, 2017);
 			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction("Opening a new account.", "credit", 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
 					newAccount.getBalance() + 500.00);
 			
 			newAccount.setBalance(newTransaction.getBalance());
@@ -684,7 +684,7 @@ public class BankTest {
 			cal2.set(Calendar.YEAR, 2017);
 			myDate2 = cal.getTime();
 			int uniqueTId2 = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction2 = new Transaction("Opening a new account.", "credit", 200.00, uniqueTId2, myDate2,
+			Transaction newTransaction2 = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 200.00, uniqueTId2, myDate2,
 					newAccount2.getBalance() + 200.00);
 			
 			newAccount2.setBalance(newTransaction2.getBalance());
@@ -729,7 +729,7 @@ public class BankTest {
 
 			IBankService bs = new BankService(arp, trp, urp);
 
-			bs.createUser("John");
+			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
 
@@ -746,7 +746,7 @@ public class BankTest {
 			cal.set(Calendar.YEAR, 2017);
 			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction("Opening a new account.", "credit", 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
 					newAccount.getBalance() + 500.00);
 			
 			newAccount.setBalance(newTransaction.getBalance());
@@ -769,7 +769,7 @@ public class BankTest {
 			cal2.set(Calendar.YEAR, 2017);
 			myDate2 = cal.getTime();
 			int uniqueTId2 = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction2 = new Transaction("Opening a new account.", "credit", 200.00, uniqueTId2, myDate2,
+			Transaction newTransaction2 = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 200.00, uniqueTId2, myDate2,
 					newAccount2.getBalance() + 200.00);
 			
 			newAccount2.setBalance(newTransaction2.getBalance());
@@ -807,7 +807,7 @@ public class BankTest {
 
 			IBankService bs = new BankService(arp, trp, urp);
 
-			bs.createUser("John");
+			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
 
@@ -824,7 +824,7 @@ public class BankTest {
 			cal.set(Calendar.YEAR, 2017);
 			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction("Opening a new account.", "credit", 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
 					newAccount.getBalance() + 500.00);
 			
 			newAccount.setBalance(newTransaction.getBalance());
@@ -847,7 +847,7 @@ public class BankTest {
 			cal2.set(Calendar.YEAR, 2017);
 			myDate2 = cal.getTime();
 			int uniqueTId2 = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction2 = new Transaction("Opening a new account.", "credit", 200.00, uniqueTId2, myDate2,
+			Transaction newTransaction2 = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 200.00, uniqueTId2, myDate2,
 					newAccount2.getBalance() + 200.00);
 			
 			newAccount2.setBalance(newTransaction2.getBalance());
@@ -881,7 +881,7 @@ public class BankTest {
 
 			IBankService bs = new BankService(arp, trp, urp);
 
-			bs.createUser("John");
+			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
 
@@ -898,7 +898,7 @@ public class BankTest {
 			cal.set(Calendar.YEAR, 2017);
 			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction("Opening a new account.", "credit", 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
 					newAccount.getBalance() + 500.00);
 			
 			newAccount.setBalance(newTransaction.getBalance());
@@ -916,7 +916,7 @@ public class BankTest {
 				depositDates = depositCal.getTime();
 				
 				int uniqueDepositId = uniqueNumberCreator.generateUniqueTransactionId();
-				Transaction deposits = new Transaction("Deposit", "debit", deposit, uniqueDepositId, depositDates, newAccount.getBalance() + deposit);
+				Transaction deposits = new Transaction(DEPOSIT, DEBIT, deposit, uniqueDepositId, depositDates, newAccount.getBalance() + deposit);
 				double newBalance = newAccount.getBalance() + deposit;
 				newAccount.setBalance(newBalance);
 				newAccount.getTransactions().add(deposits);
@@ -938,7 +938,7 @@ public class BankTest {
 				withdrawDates = withdrawCal.getTime();
 				
 				int uniqueWithdrawId = uniqueNumberCreator.generateUniqueTransactionId();
-				Transaction withdrawals = new Transaction("Withdraw", "debit", withdraw, uniqueWithdrawId, withdrawDates, newAccount.getBalance() - withdraw);
+				Transaction withdrawals = new Transaction(WITHDRAW, DEBIT, withdraw, uniqueWithdrawId, withdrawDates, newAccount.getBalance() - withdraw);
 				double newBalance = newAccount.getBalance() - withdraw;
 				newAccount.setBalance(newBalance);
 				newAccount.getTransactions().add(withdrawals);
@@ -954,9 +954,7 @@ public class BankTest {
 			
 			int t = 11;
 			for(int i=0; i<10; i++) {
-				//System.out.println("t: "+t);
-				//System.out.println("newAccount transaction: "+newAccount.getTransactions().get(t).getDate().toString());
-				//System.out.println("retrievalAccount transaction: "+retrievalAccount.getTransactions().get(i).getDate().toString());
+				
 				assertEquals(newAccount.getTransactions().get(t), retrievalAccount.getTransactions().get(i));
 				--t;
 			}
@@ -979,7 +977,7 @@ public class BankTest {
 
 			IBankService bs = new BankService(arp, trp, urp);
 
-			bs.createUser("John");
+			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
 
@@ -996,7 +994,7 @@ public class BankTest {
 			cal.set(Calendar.YEAR, 2017);
 			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction("Opening a new account.", "credit", 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
 					newAccount.getBalance() + 500.00);
 			
 			newAccount.setBalance(newTransaction.getBalance());
@@ -1014,7 +1012,7 @@ public class BankTest {
 				depositDates = depositCal.getTime();
 				
 				int uniqueDepositId = uniqueNumberCreator.generateUniqueTransactionId();
-				Transaction deposits = new Transaction("Deposit", "debit", deposit, uniqueDepositId, depositDates, newAccount.getBalance() + deposit);
+				Transaction deposits = new Transaction(DEPOSIT, DEBIT, deposit, uniqueDepositId, depositDates, newAccount.getBalance() + deposit);
 				double newBalance = newAccount.getBalance() + deposit;
 				newAccount.setBalance(newBalance);
 				newAccount.getTransactions().add(deposits);
@@ -1036,7 +1034,7 @@ public class BankTest {
 				withdrawDates = withdrawCal.getTime();
 				
 				int uniqueWithdrawId = uniqueNumberCreator.generateUniqueTransactionId();
-				Transaction withdrawals = new Transaction("Withdraw", "debit", withdraw, uniqueWithdrawId, withdrawDates, newAccount.getBalance() - withdraw);
+				Transaction withdrawals = new Transaction(WITHDRAW, DEBIT, withdraw, uniqueWithdrawId, withdrawDates, newAccount.getBalance() - withdraw);
 				double newBalance = newAccount.getBalance() - withdraw;
 				newAccount.setBalance(newBalance);
 				newAccount.getTransactions().add(withdrawals);
@@ -1067,7 +1065,7 @@ public class BankTest {
 
 			IBankService bs = new BankService(arp, trp, urp);
 
-			bs.createUser("John");
+			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
 
@@ -1087,7 +1085,7 @@ public class BankTest {
 	        cal.set(Calendar.SECOND,00);
 			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction("Opening a new account.", "credit", 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
 					newAccount.getBalance() + 500.00);
 			
 			newAccount.setBalance(newTransaction.getBalance());
@@ -1111,7 +1109,7 @@ public class BankTest {
 				depositDates = depositCal.getTime();
 				
 				int uniqueDepositId = uniqueNumberCreator.generateUniqueTransactionId();
-				Transaction deposits = new Transaction("Deposit", "debit", deposit, uniqueDepositId, depositDates, newAccount.getBalance() + deposit);
+				Transaction deposits = new Transaction(DEPOSIT, DEBIT, deposit, uniqueDepositId, depositDates, newAccount.getBalance() + deposit);
 				double newBalance = newAccount.getBalance() + deposit;
 				newAccount.setBalance(newBalance);
 				newAccount.getTransactions().add(deposits);
@@ -1142,7 +1140,7 @@ public class BankTest {
 				withdrawDates = withdrawCal.getTime();
 				
 				int uniqueWithdrawId = uniqueNumberCreator.generateUniqueTransactionId();
-				Transaction withdrawals = new Transaction("Withdraw", "debit", withdraw, uniqueWithdrawId, withdrawDates, newAccount.getBalance() - withdraw);
+				Transaction withdrawals = new Transaction(WITHDRAW, DEBIT, withdraw, uniqueWithdrawId, withdrawDates, newAccount.getBalance() - withdraw);
 				double newBalance = newAccount.getBalance() - withdraw;
 				newAccount.setBalance(newBalance);
 				newAccount.getTransactions().add(withdrawals);
@@ -1209,7 +1207,7 @@ public class BankTest {
 
 			IBankService bs = new BankService(arp, trp, urp);
 
-			bs.createUser("John");
+			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
 
@@ -1226,7 +1224,7 @@ public class BankTest {
 			cal.set(Calendar.YEAR, 2017);
 			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction("Opening a new account.", "credit", 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
 					newAccount.getBalance() + 500.00);
 			
 			newAccount.setBalance(newTransaction.getBalance());
@@ -1244,7 +1242,7 @@ public class BankTest {
 				depositDates = depositCal.getTime();
 				
 				int uniqueDepositId = uniqueNumberCreator.generateUniqueTransactionId();
-				Transaction deposits = new Transaction("Deposit", "debit", deposit, uniqueDepositId, depositDates, newAccount.getBalance() + deposit);
+				Transaction deposits = new Transaction(DEPOSIT, DEBIT, deposit, uniqueDepositId, depositDates, newAccount.getBalance() + deposit);
 				double newBalance = newAccount.getBalance() + deposit;
 				newAccount.setBalance(newBalance);
 				newAccount.getTransactions().add(deposits);
@@ -1266,7 +1264,7 @@ public class BankTest {
 				withdrawDates = withdrawCal.getTime();
 				
 				int uniqueWithdrawId = uniqueNumberCreator.generateUniqueTransactionId();
-				Transaction withdrawals = new Transaction("Withdraw", "debit", withdraw, uniqueWithdrawId, withdrawDates, newAccount.getBalance() - withdraw);
+				Transaction withdrawals = new Transaction(WITHDRAW, DEBIT, withdraw, uniqueWithdrawId, withdrawDates, newAccount.getBalance() - withdraw);
 				double newBalance = newAccount.getBalance() - withdraw;
 				newAccount.setBalance(newBalance);
 				newAccount.getTransactions().add(withdrawals);

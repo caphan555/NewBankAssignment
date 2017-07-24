@@ -20,7 +20,12 @@ public class TransactionRepo implements ITransactionRepo {
 	}
 
 	public Transaction findTransaction(int transactionId) {
-		// TODO Auto-generated method stub
+		
+		for(Transaction t: this.getTransactions()) {
+			if(t.getTransactionId() == transactionId) {
+				return t;
+			}
+		}
 		return null;
 	}
 
