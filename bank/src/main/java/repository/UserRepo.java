@@ -1,13 +1,14 @@
 package repository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import pojo.User;
 
 public class UserRepo implements IUserRepo {
-	private ArrayList<User> users;
+	private List<User> users;
 
-	public UserRepo(ArrayList<User> users) {
+	public UserRepo(List<User> users) {
 		this.users = users;
 	}
 
@@ -24,15 +25,19 @@ public class UserRepo implements IUserRepo {
 	}
 
 	public User findUser(String name) {
-		// TODO Auto-generated method stub
+		for(User u: this.getUsers()) {
+			if(u.getName().equals(name)) {
+				return u;
+			}
+		}
 		return null;
 	}
 
-	public ArrayList<User> getUsers() {
+	public List<User> getUsers() {
 		return users;
 	}
 
-	public void setUsers(ArrayList<User> users) {
+	public void setUsers(List<User> users) {
 		this.users = users;
 	}
 	

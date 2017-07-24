@@ -1,10 +1,11 @@
 package pojo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Account {
 	private double balance;
-	private ArrayList<Transaction> transactions;
+	private List<Transaction> transactions;
 	private int accountNo;
 	private User user;
 	
@@ -13,7 +14,7 @@ public class Account {
 		super();
 	}
 
-	public Account(double balance, ArrayList<Transaction> transactions, int accountNo, User user) {
+	public Account(double balance, List<Transaction> transactions, int accountNo, User user) {
 		this.balance = balance;
 		this.transactions = transactions;
 		this.accountNo = accountNo;
@@ -28,11 +29,11 @@ public class Account {
 		this.balance = balance;
 	}
 	
-	public ArrayList<Transaction> getTransactions() {
+	public List<Transaction> getTransactions() {
 		return transactions;
 	}
 	
-	public void setTransactions(ArrayList<Transaction> transactions) {
+	public void setTransactions(List<Transaction> transactions) {
 		this.transactions = transactions;
 	}
 	

@@ -1,15 +1,16 @@
 package repository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import pojo.Account;
 
 public class AccountRepo implements IAccountRepo {
 	
-	private ArrayList<Account> accounts;
+	private List<Account> accounts;
 	private static final String SUCCESS = "success";
 	
-	public AccountRepo(ArrayList<Account> accounts) {
+	public AccountRepo(List<Account> accounts) {
 		super();
 		this.accounts = accounts;
 	}
@@ -33,11 +34,11 @@ public class AccountRepo implements IAccountRepo {
 		return null;
 	}
 
-	public ArrayList<Account> getAccounts() {
+	public List<Account> getAccounts() {
 		return accounts;
 	}
 
-	public void setAccounts(ArrayList<Account> accounts) {
+	public void setAccounts(List<Account> accounts) {
 		this.accounts = accounts;
 	}
 

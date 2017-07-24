@@ -1,12 +1,13 @@
 package repository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import pojo.User;
 
 public interface IUserRepo {
 	public String saveUser(User user);
 	public User findUser(String name);
-	public ArrayList<User> getUsers();
-	public void setUsers(ArrayList<User> users);
+	public List<User> getUsers();
+	public void setUsers(List<User> users);
 }

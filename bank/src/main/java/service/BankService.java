@@ -3,6 +3,7 @@ package service;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import exception.AccountDoesNotExistException;
 import exception.ExceedDailyWithdrawalAmountException;
@@ -170,8 +171,8 @@ public class BankService implements IBankService {
 		if(retrievedAccount == null) {
 			throw new AccountDoesNotExistException();
 		}
-		ArrayList<Transaction> retrievedTransactions = retrievedAccount.getTransactions();
-		ArrayList<Transaction> printingTransactions = new ArrayList<Transaction>();
+		List<Transaction> retrievedTransactions = retrievedAccount.getTransactions();
+		List<Transaction> printingTransactions = new ArrayList<Transaction>();
 		
 		for(Transaction t:retrievedTransactions) {
 			Date transactionDate = t.getDate();
@@ -195,10 +196,10 @@ public class BankService implements IBankService {
 			throw new AccountDoesNotExistException();
 		}
 		
-		ArrayList<Transaction> retrievedTransactions = retrievedAccount.getTransactions();
+		List<Transaction> retrievedTransactions = retrievedAccount.getTransactions();
 		int transactionSize = retrievedTransactions.size();
 		--transactionSize;
-		ArrayList<Transaction> printingTransactions = new ArrayList<Transaction>();
+		List<Transaction> printingTransactions = new ArrayList<Transaction>();
 		
 		for(int i=1; i<=10; i++) {
 			printingTransactions.add(retrievedTransactions.get(transactionSize));

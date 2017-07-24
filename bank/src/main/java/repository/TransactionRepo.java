@@ -1,15 +1,16 @@
 package repository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import pojo.Transaction;
 
 public class TransactionRepo implements ITransactionRepo {
 
-	private ArrayList<Transaction> transactions;
+	private List<Transaction> transactions;
 	private final static String SUCCESS = "success";
 	
-	public TransactionRepo(ArrayList<Transaction> transactions) {
+	public TransactionRepo(List<Transaction> transactions) {
 		this.transactions = transactions;
 	}
 
@@ -29,11 +30,11 @@ public class TransactionRepo implements ITransactionRepo {
 		return null;
 	}
 
-	public ArrayList<Transaction> getTransactions() {
+	public List<Transaction> getTransactions() {
 		return transactions;
 	}
 
-	public void setTransactions(ArrayList<Transaction> transactions) {
+	public void setTransactions(List<Transaction> transactions) {
 		this.transactions = transactions;
 	}
 	
