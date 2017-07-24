@@ -237,7 +237,7 @@ public class BankTest {
 			Account retrievedAccount = bs.showBalance(1);
 			
 			String balanceResult;
-			if(500.00 == retrievedAccount.getBalance()) {
+			if(Double.compare(500.00, retrievedAccount.getBalance()) == 0) {
 				balanceResult = SUCCESS;
 			} else {
 				balanceResult = "failure";
@@ -333,7 +333,7 @@ public class BankTest {
 			Account depositedAccount = bs.deposit(1, 300.00);
 			double newBalance = depositedAccount.getBalance();
 			String depositResult;
-			if(newBalance == 800.00) {
+			if(Double.compare(800.00, newBalance) == 0){
 				depositResult = "Money successfully deposited!";
 			} else {
 				depositResult = "Failed to deposit money!";
@@ -478,7 +478,7 @@ public class BankTest {
 			Account withdrawAccount = bs.withdraw(1, 300.00);
 			double newBalance = withdrawAccount.getBalance();
 			String depositResult;
-			if(newBalance == 200.00) {
+			if(Double.compare(newBalance, 200.00) == 0) {
 				depositResult = "Money successfully withdrew!";
 			} else {
 				depositResult = "Failed to withdraw money!";
@@ -703,7 +703,7 @@ public class BankTest {
 			bs.fundTransfer(150.00, transferDate, newAccount2.getAccountNo(), newAccount.getAccountNo());
 			
 			String transferResult;
-			if(newAccount.getBalance() == 350.00) {
+			if(Double.compare(350.00, newAccount.getBalance()) == 0) {
 				transferResult = "Funds successfully transferred!";
 			} else {
 				transferResult = "Funds transfer failed!";
