@@ -168,7 +168,7 @@ public class BankService implements IBankService {
 			throw new AccountDoesNotExistException();
 		}
 		List<Transaction> retrievedTransactions = retrievedAccount.getTransactions();
-		List<Transaction> printingTransactions = new ArrayList<Transaction>();
+		List<Transaction> printingTransactions = new ArrayList<>();
 		
 		for(Transaction t:retrievedTransactions) {
 			Date transactionDate = t.getDate();
@@ -195,7 +195,7 @@ public class BankService implements IBankService {
 		List<Transaction> retrievedTransactions = retrievedAccount.getTransactions();
 		int transactionSize = retrievedTransactions.size();
 		--transactionSize;
-		List<Transaction> printingTransactions = new ArrayList<Transaction>();
+		List<Transaction> printingTransactions = new ArrayList<>();
 		
 		for(int i=1; i<=10; i++) {
 			printingTransactions.add(retrievedTransactions.get(transactionSize));

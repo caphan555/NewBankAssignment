@@ -42,10 +42,10 @@ public class BankTest {
 		List<User> users = new ArrayList<>();
 		IUserRepo urp = new UserRepo(users);
 
-		List<Transaction> transactions = new ArrayList<Transaction>();
+		List<Transaction> transactions = new ArrayList<>();
 		ITransactionRepo trp = new TransactionRepo(transactions);
 
-		List<Account> accounts = new ArrayList<Account>();
+		List<Account> accounts = new ArrayList<>();
 		IAccountRepo arp = new AccountRepo(accounts);
 
 		IBankService bs = new BankService(arp, trp, urp);
@@ -60,10 +60,10 @@ public class BankTest {
 		List<User> users = new ArrayList<>();
 		IUserRepo urp = new UserRepo(users);
 
-		List<Transaction> transactions = new ArrayList<Transaction>();
+		List<Transaction> transactions = new ArrayList<>();
 		ITransactionRepo trp = new TransactionRepo(transactions);
 
-		List<Account> accounts = new ArrayList<Account>();
+		List<Account> accounts = new ArrayList<>();
 		IAccountRepo arp = new AccountRepo(accounts);
 
 		IBankService bs = new BankService(arp, trp, urp);
@@ -94,13 +94,13 @@ public class BankTest {
 	public void testCreateAccountSuccess() throws InvalidStartAccountAmountException{
 
 		
-			List<User> users = new ArrayList<User>();
+			List<User> users = new ArrayList<>();
 			IUserRepo urp = new UserRepo(users);
 
 			List<Transaction> transactions = new ArrayList<>();
 			ITransactionRepo trp = new TransactionRepo(transactions);
 
-			List<Account> accounts = new ArrayList<Account>();
+			List<Account> accounts = new ArrayList<>();
 			IAccountRepo arp = new AccountRepo(accounts);
 
 			IBankService bs = new BankService(arp, trp, urp);
@@ -115,14 +115,12 @@ public class BankTest {
 			Account newAccount = new Account(0.00, new ArrayList<Transaction>(), uniqueAId, user);
 
 			// set date
-			Date myDate = new Date();
 			Calendar cal = Calendar.getInstance();
 			cal.set(Calendar.MONTH, 4);
 			cal.set(Calendar.DATE, 3);
 			cal.set(Calendar.YEAR, 2017);
-			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, cal.getTime(),
 					newAccount.getBalance() + 500.00);
 			newAccount.setBalance(newTransaction.getBalance());
 			newAccount.getTransactions().add(newTransaction);
@@ -134,7 +132,7 @@ public class BankTest {
 	}
 
 	@Test(expected = NullPointerException.class)
-	public void testCannotCreateNullAccount() throws NullPointerException, InvalidStartAccountAmountException{
+	public void testCannotCreateNullAccount() throws InvalidStartAccountAmountException{
 
 		
 			List<User> users = new ArrayList<>();
@@ -155,7 +153,7 @@ public class BankTest {
 
 	@Test(expected = exception.InvalidStartAccountAmountException.class)
 	public void testInsufficientAmountToCreateAccount()
-			throws NullPointerException, InvalidStartAccountAmountException {
+			throws  InvalidStartAccountAmountException {
 
 		
 			List<User> users = new ArrayList<>();
@@ -179,14 +177,12 @@ public class BankTest {
 			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
 
 			// set date
-			Date myDate = new Date();
 			Calendar cal = Calendar.getInstance();
 			cal.set(Calendar.MONTH, 4);
 			cal.set(Calendar.DATE, 3);
 			cal.set(Calendar.YEAR, 2017);
-			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, cal.getTime(),
 					newAccount.getBalance() + 10.00);
 			newAccount.setBalance(newTransaction.getBalance());
 			newAccount.getTransactions().add(newTransaction);
@@ -204,10 +200,10 @@ public class BankTest {
 			List<User> users = new ArrayList<User>();
 			IUserRepo urp = new UserRepo(users);
 
-			List<Transaction> transactions = new ArrayList<Transaction>();
+			List<Transaction> transactions = new ArrayList<>();
 			ITransactionRepo trp = new TransactionRepo(transactions);
 
-			List<Account> accounts = new ArrayList<Account>();
+			List<Account> accounts = new ArrayList<>();
 			IAccountRepo arp = new AccountRepo(accounts);
 
 			IBankService bs = new BankService(arp, trp, urp);
@@ -222,14 +218,12 @@ public class BankTest {
 			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
 
 			// set date
-			Date myDate = new Date();
 			Calendar cal = Calendar.getInstance();
 			cal.set(Calendar.MONTH, 4);
 			cal.set(Calendar.DATE, 3);
 			cal.set(Calendar.YEAR, 2017);
-			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, cal.getTime(),
 					newAccount.getBalance() + 500.00);
 			newAccount.setBalance(newTransaction.getBalance());
 			newAccount.getTransactions().add(newTransaction);
@@ -254,10 +248,10 @@ public class BankTest {
 			ArrayList<User> users = new ArrayList<User>();
 			IUserRepo urp = new UserRepo(users);
 
-			ArrayList<Transaction> transactions = new ArrayList<Transaction>();
+			ArrayList<Transaction> transactions = new ArrayList<>();
 			ITransactionRepo trp = new TransactionRepo(transactions);
 
-			ArrayList<Account> accounts = new ArrayList<Account>();
+			ArrayList<Account> accounts = new ArrayList<>();
 			IAccountRepo arp = new AccountRepo(accounts);
 
 			IBankService bs = new BankService(arp, trp, urp);
@@ -272,14 +266,12 @@ public class BankTest {
 			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
 
 			// set date
-			Date myDate = new Date();
 			Calendar cal = Calendar.getInstance();
 			cal.set(Calendar.MONTH, 4);
 			cal.set(Calendar.DATE, 3);
 			cal.set(Calendar.YEAR, 2017);
-			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, cal.getTime(),
 					newAccount.getBalance() + 500.00);
 			newAccount.setBalance(newTransaction.getBalance());
 			newAccount.getTransactions().add(newTransaction);
@@ -297,10 +289,10 @@ public class BankTest {
 			List<User> users = new ArrayList<User>();
 			IUserRepo urp = new UserRepo(users);
 
-			List<Transaction> transactions = new ArrayList<Transaction>();
+			List<Transaction> transactions = new ArrayList<>();
 			ITransactionRepo trp = new TransactionRepo(transactions);
 
-			List<Account> accounts = new ArrayList<Account>();
+			List<Account> accounts = new ArrayList<>();
 			IAccountRepo arp = new AccountRepo(accounts);
 
 			IBankService bs = new BankService(arp, trp, urp);
@@ -315,14 +307,12 @@ public class BankTest {
 			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
 
 			// set date
-			Date myDate = new Date();
 			Calendar cal = Calendar.getInstance();
 			cal.set(Calendar.MONTH, 4);
 			cal.set(Calendar.DATE, 3);
 			cal.set(Calendar.YEAR, 2017);
-			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, cal.getTime(),
 					newAccount.getBalance() + 500.00);
 			
 			newAccount.setBalance(newTransaction.getBalance());
@@ -393,7 +383,7 @@ public class BankTest {
 					InvalidStartAccountAmountException, InsufficientAmountToDepositException{
 
 		
-			List<User> users = new ArrayList<User>();
+			List<User> users = new ArrayList<>();
 			IUserRepo urp = new UserRepo(users);
 
 			List<Transaction> transactions = new ArrayList<>();
@@ -414,14 +404,12 @@ public class BankTest {
 			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
 
 			// set date
-			Date myDate = new Date();
 			Calendar cal = Calendar.getInstance();
 			cal.set(Calendar.MONTH, 4);
 			cal.set(Calendar.DATE, 3);
 			cal.set(Calendar.YEAR, 2017);
-			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, cal.getTime(),
 					newAccount.getBalance() + 500.00);
 			
 			newAccount.setBalance(newTransaction.getBalance());
@@ -494,7 +482,7 @@ public class BankTest {
 			InsufficientFundsWithdrawalException{
 
 		
-			List<User> users = new ArrayList<User>();
+			List<User> users = new ArrayList<>();
 			IUserRepo urp = new UserRepo(users);
 
 			List<Transaction> transactions = new ArrayList<>();
@@ -515,14 +503,12 @@ public class BankTest {
 			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
 
 			// set date
-			Date myDate = new Date();
 			Calendar cal = Calendar.getInstance();
 			cal.set(Calendar.MONTH, 4);
 			cal.set(Calendar.DATE, 3);
 			cal.set(Calendar.YEAR, 2017);
-			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, cal.getTime(),
 					newAccount.getBalance() + 500.00);
 			
 			newAccount.setBalance(newTransaction.getBalance());
@@ -547,7 +533,7 @@ public class BankTest {
 			List<Transaction> transactions = new ArrayList<>();
 			ITransactionRepo trp = new TransactionRepo(transactions);
 
-			List<Account> accounts = new ArrayList<Account>();
+			List<Account> accounts = new ArrayList<>();
 			IAccountRepo arp = new AccountRepo(accounts);
 
 			IBankService bs = new BankService(arp, trp, urp);
@@ -562,14 +548,12 @@ public class BankTest {
 			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
 
 			// set date
-			Date myDate = new Date();
 			Calendar cal = Calendar.getInstance();
 			cal.set(Calendar.MONTH, 4);
 			cal.set(Calendar.DATE, 3);
 			cal.set(Calendar.YEAR, 2017);
-			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, cal.getTime(),
 					newAccount.getBalance() + 500.00);
 			
 			newAccount.setBalance(newTransaction.getBalance());
@@ -588,7 +572,7 @@ public class BankTest {
 			InsufficientFundsWithdrawalException{
 
 		
-			List<User> users = new ArrayList<User>();
+			List<User> users = new ArrayList<>();
 			IUserRepo urp = new UserRepo(users);
 
 			List<Transaction> transactions = new ArrayList<>();
@@ -609,14 +593,12 @@ public class BankTest {
 			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
 
 			// set date
-			Date myDate = new Date();
 			Calendar cal = Calendar.getInstance();
 			cal.set(Calendar.MONTH, 4);
 			cal.set(Calendar.DATE, 3);
 			cal.set(Calendar.YEAR, 2017);
-			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, cal.getTime(),
 					newAccount.getBalance() + 500.00);
 			
 			newAccount.setBalance(newTransaction.getBalance());
@@ -634,7 +616,7 @@ public class BankTest {
 			InvalidStartAccountAmountException, InsufficientFundsToTransferException {
 
 		
-			List<User> users = new ArrayList<User>();
+			List<User> users = new ArrayList<>();
 			IUserRepo urp = new UserRepo(users);
 
 			List<Transaction> transactions = new ArrayList<>();
@@ -655,14 +637,12 @@ public class BankTest {
 			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
 
 			// set date
-			Date myDate = new Date();
 			Calendar cal = Calendar.getInstance();
 			cal.set(Calendar.MONTH, 4);
 			cal.set(Calendar.DATE, 3);
 			cal.set(Calendar.YEAR, 2017);
-			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, cal.getTime(),
 					newAccount.getBalance() + 500.00);
 			
 			newAccount.setBalance(newTransaction.getBalance());
@@ -678,14 +658,12 @@ public class BankTest {
 			Account newAccount2 = new Account(0.00, new ArrayList<>(), uniqueAId2, secondUser);
 
 			// set date
-			Date myDate2 = new Date();
 			Calendar cal2 = Calendar.getInstance();
 			cal2.set(Calendar.MONTH, 9);
 			cal2.set(Calendar.DATE, 28);
 			cal2.set(Calendar.YEAR, 2017);
-			myDate2 = cal.getTime();
 			int uniqueTId2 = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction2 = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 200.00, uniqueTId2, myDate2,
+			Transaction newTransaction2 = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 200.00, uniqueTId2, cal2.getTime(),
 					newAccount2.getBalance() + 200.00);
 			
 			newAccount2.setBalance(newTransaction2.getBalance());
@@ -694,14 +672,12 @@ public class BankTest {
 			 bs.createAccount(newAccount);
 			bs.createAccount(newAccount2);
 			
-			Date transferDate = new Date();
 			Calendar cal3 = Calendar.getInstance();
 			cal3.set(Calendar.MONTH, 10);
 			cal3.set(Calendar.DATE, 14);
 			cal3.set(Calendar.YEAR, 2017);
-			transferDate = cal3.getTime();
 			
-			bs.fundTransfer(150.00, transferDate, newAccount2.getAccountNo(), newAccount.getAccountNo());
+			bs.fundTransfer(150.00, cal3.getTime(), newAccount2.getAccountNo(), newAccount.getAccountNo());
 			
 			String transferResult;
 			if(Double.compare(350.00, newAccount.getBalance()) == 0) {
@@ -740,14 +716,12 @@ public class BankTest {
 			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
 
 			// set date
-			Date myDate = new Date();
 			Calendar cal = Calendar.getInstance();
 			cal.set(Calendar.MONTH, 4);
 			cal.set(Calendar.DATE, 3);
 			cal.set(Calendar.YEAR, 2017);
-			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, cal.getTime(),
 					newAccount.getBalance() + 500.00);
 			
 			newAccount.setBalance(newTransaction.getBalance());
@@ -763,14 +737,12 @@ public class BankTest {
 			Account newAccount2 = new Account(0.00, new ArrayList<>(), uniqueAId2, secondUser);
 
 			// set date
-			Date myDate2 = new Date();
 			Calendar cal2 = Calendar.getInstance();
 			cal2.set(Calendar.MONTH, 9);
 			cal2.set(Calendar.DATE, 28);
 			cal2.set(Calendar.YEAR, 2017);
-			myDate2 = cal.getTime();
 			int uniqueTId2 = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction2 = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 200.00, uniqueTId2, myDate2,
+			Transaction newTransaction2 = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 200.00, uniqueTId2, cal2.getTime(),
 					newAccount2.getBalance() + 200.00);
 			
 			newAccount2.setBalance(newTransaction2.getBalance());
@@ -779,14 +751,12 @@ public class BankTest {
 			bs.createAccount(newAccount);
 			bs.createAccount(newAccount2);
 			
-			Date transferDate = new Date();
 			Calendar cal3 = Calendar.getInstance();
 			cal3.set(Calendar.MONTH, 10);
 			cal3.set(Calendar.DATE, 14);
 			cal3.set(Calendar.YEAR, 2017);
-			transferDate = cal3.getTime();
 			
-			bs.fundTransfer(600.00, transferDate, newAccount2.getAccountNo(), newAccount.getAccountNo());
+			bs.fundTransfer(600.00, cal3.getTime(), newAccount2.getAccountNo(), newAccount.getAccountNo());
 			
 			
 			
@@ -818,14 +788,12 @@ public class BankTest {
 			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
 
 			// set date
-			Date myDate = new Date();
 			Calendar cal = Calendar.getInstance();
 			cal.set(Calendar.MONTH, 4);
 			cal.set(Calendar.DATE, 3);
 			cal.set(Calendar.YEAR, 2017);
-			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, cal.getTime(),
 					newAccount.getBalance() + 500.00);
 			
 			newAccount.setBalance(newTransaction.getBalance());
@@ -841,14 +809,12 @@ public class BankTest {
 			Account newAccount2 = new Account(0.00, new ArrayList<Transaction>(), uniqueAId2, secondUser);
 
 			// set date
-			Date myDate2 = new Date();
 			Calendar cal2 = Calendar.getInstance();
 			cal2.set(Calendar.MONTH, 9);
 			cal2.set(Calendar.DATE, 28);
 			cal2.set(Calendar.YEAR, 2017);
-			myDate2 = cal.getTime();
 			int uniqueTId2 = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction2 = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 200.00, uniqueTId2, myDate2,
+			Transaction newTransaction2 = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 200.00, uniqueTId2, cal2.getTime(),
 					newAccount2.getBalance() + 200.00);
 			
 			newAccount2.setBalance(newTransaction2.getBalance());
@@ -857,27 +823,25 @@ public class BankTest {
 			 bs.createAccount(newAccount);
 			bs.createAccount(newAccount2);
 			
-			Date transferDate = new Date();
 			Calendar cal3 = Calendar.getInstance();
 			cal3.set(Calendar.MONTH, 10);
 			cal3.set(Calendar.DATE, 14);
 			cal3.set(Calendar.YEAR, 2017);
-			transferDate = cal3.getTime();
 			
-			 bs.fundTransfer(100.00, transferDate, 9, 10);
+			 bs.fundTransfer(100.00, cal3.getTime(), 9, 10);
 	}
 	
 	@Test
 	public void testPrintTransactionLastTenSuccess() throws AccountDoesNotExistException, 
 	InvalidStartAccountAmountException, InsufficientAmountToDepositException{
 		
-			List<User> users = new ArrayList<User>();
+			List<User> users = new ArrayList<>();
 			IUserRepo urp = new UserRepo(users);
 
 			List<Transaction> transactions = new ArrayList<>();
 			ITransactionRepo trp = new TransactionRepo(transactions);
 
-			List<Account> accounts = new ArrayList<Account>();
+			List<Account> accounts = new ArrayList<>();
 			IAccountRepo arp = new AccountRepo(accounts);
 
 			IBankService bs = new BankService(arp, trp, urp);
@@ -892,14 +856,12 @@ public class BankTest {
 			Account newAccount = new Account(0.00, new ArrayList<Transaction>(), uniqueAId, user);
 
 			// set date
-			Date myDate = new Date();
 			Calendar cal = Calendar.getInstance();
 			cal.set(Calendar.MONTH, 4);
 			cal.set(Calendar.DATE, 3);
 			cal.set(Calendar.YEAR, 2017);
-			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, cal.getTime(),
 					newAccount.getBalance() + 500.00);
 			
 			newAccount.setBalance(newTransaction.getBalance());
@@ -909,15 +871,13 @@ public class BankTest {
 			int day = 13;
 			double deposit = 200.00;
 			for(int i=0; i<=5; i++) {
-				Date depositDates = new Date();
 				Calendar depositCal = Calendar.getInstance();
 				depositCal.set(Calendar.MONTH, month);
 				depositCal.set(Calendar.DATE, day);
 				depositCal.set(Calendar.YEAR, 2017);
-				depositDates = depositCal.getTime();
 				
 				int uniqueDepositId = uniqueNumberCreator.generateUniqueTransactionId();
-				Transaction deposits = new Transaction(DEPOSIT, DEBIT, deposit, uniqueDepositId, depositDates, newAccount.getBalance() + deposit);
+				Transaction deposits = new Transaction(DEPOSIT, DEBIT, deposit, uniqueDepositId, depositCal.getTime(), newAccount.getBalance() + deposit);
 				double newBalance = newAccount.getBalance() + deposit;
 				newAccount.setBalance(newBalance);
 				newAccount.getTransactions().add(deposits);
@@ -931,15 +891,13 @@ public class BankTest {
 			int day2 = 23;
 			double withdraw = 300.00;
 			for(int i=0; i<=4; i++) {
-				Date withdrawDates = new Date();
 				Calendar withdrawCal = Calendar.getInstance();
 				withdrawCal.set(Calendar.MONTH, month2);
 				withdrawCal.set(Calendar.DATE, day2);
 				withdrawCal.set(Calendar.YEAR, 2017);
-				withdrawDates = withdrawCal.getTime();
 				
 				int uniqueWithdrawId = uniqueNumberCreator.generateUniqueTransactionId();
-				Transaction withdrawals = new Transaction(WITHDRAW, DEBIT, withdraw, uniqueWithdrawId, withdrawDates, newAccount.getBalance() - withdraw);
+				Transaction withdrawals = new Transaction(WITHDRAW, DEBIT, withdraw, uniqueWithdrawId, withdrawCal.getTime(), newAccount.getBalance() - withdraw);
 				double newBalance = newAccount.getBalance() - withdraw;
 				newAccount.setBalance(newBalance);
 				newAccount.getTransactions().add(withdrawals);
@@ -988,14 +946,12 @@ public class BankTest {
 			Account newAccount = new Account(0.00, new ArrayList<Transaction>(), uniqueAId, user);
 
 			// set date
-			Date myDate = new Date();
 			Calendar cal = Calendar.getInstance();
 			cal.set(Calendar.MONTH, 4);
 			cal.set(Calendar.DATE, 3);
 			cal.set(Calendar.YEAR, 2017);
-			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, cal.getTime(),
 					newAccount.getBalance() + 500.00);
 			
 			newAccount.setBalance(newTransaction.getBalance());
@@ -1005,15 +961,13 @@ public class BankTest {
 			int day = 13;
 			double deposit = 200.00;
 			for(int i=0; i<=5; i++) {
-				Date depositDates = new Date();
 				Calendar depositCal = Calendar.getInstance();
 				depositCal.set(Calendar.MONTH, month);
 				depositCal.set(Calendar.DATE, day);
 				depositCal.set(Calendar.YEAR, 2017);
-				depositDates = depositCal.getTime();
 				
 				int uniqueDepositId = uniqueNumberCreator.generateUniqueTransactionId();
-				Transaction deposits = new Transaction(DEPOSIT, DEBIT, deposit, uniqueDepositId, depositDates, newAccount.getBalance() + deposit);
+				Transaction deposits = new Transaction(DEPOSIT, DEBIT, deposit, uniqueDepositId, depositCal.getTime(), newAccount.getBalance() + deposit);
 				double newBalance = newAccount.getBalance() + deposit;
 				newAccount.setBalance(newBalance);
 				newAccount.getTransactions().add(deposits);
@@ -1027,15 +981,13 @@ public class BankTest {
 			int day2 = 23;
 			double withdraw = 300.00;
 			for(int i=0; i<=4; i++) {
-				Date withdrawDates = new Date();
 				Calendar withdrawCal = Calendar.getInstance();
 				withdrawCal.set(Calendar.MONTH, month2);
 				withdrawCal.set(Calendar.DATE, day2);
 				withdrawCal.set(Calendar.YEAR, 2017);
-				withdrawDates = withdrawCal.getTime();
 				
 				int uniqueWithdrawId = uniqueNumberCreator.generateUniqueTransactionId();
-				Transaction withdrawals = new Transaction(WITHDRAW, DEBIT, withdraw, uniqueWithdrawId, withdrawDates, newAccount.getBalance() - withdraw);
+				Transaction withdrawals = new Transaction(WITHDRAW, DEBIT, withdraw, uniqueWithdrawId, withdrawCal.getTime(), newAccount.getBalance() - withdraw);
 				double newBalance = newAccount.getBalance() - withdraw;
 				newAccount.setBalance(newBalance);
 				newAccount.getTransactions().add(withdrawals);
@@ -1076,7 +1028,6 @@ public class BankTest {
 			Account newAccount = new Account(0.00, new ArrayList<Transaction>(), uniqueAId, user);
 
 			// set date
-			Date myDate = new Date();
 			Calendar cal = Calendar.getInstance();
 			cal.set(Calendar.MONTH, 4);
 			cal.set(Calendar.DATE, 3);
@@ -1084,9 +1035,8 @@ public class BankTest {
 			cal.set(Calendar.HOUR,00);
 	        cal.set(Calendar.MINUTE,00);
 	        cal.set(Calendar.SECOND,00);
-			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, cal.getTime(),
 					newAccount.getBalance() + 500.00);
 			
 			newAccount.setBalance(newTransaction.getBalance());
@@ -1099,7 +1049,6 @@ public class BankTest {
 			int second = 14;
 			double deposit = 200.00;
 			for(int i=0; i<=5; i++) {
-				Date depositDates = new Date();
 				Calendar depositCal = Calendar.getInstance();
 				depositCal.set(Calendar.MONTH, month);
 				depositCal.set(Calendar.DATE, day);
@@ -1107,10 +1056,9 @@ public class BankTest {
 				depositCal.set(Calendar.HOUR,hour);
 		        depositCal.set(Calendar.MINUTE,minute);
 		        depositCal.set(Calendar.SECOND,second);
-				depositDates = depositCal.getTime();
 				
 				int uniqueDepositId = uniqueNumberCreator.generateUniqueTransactionId();
-				Transaction deposits = new Transaction(DEPOSIT, DEBIT, deposit, uniqueDepositId, depositDates, newAccount.getBalance() + deposit);
+				Transaction deposits = new Transaction(DEPOSIT, DEBIT, deposit, uniqueDepositId, depositCal.getTime(), newAccount.getBalance() + deposit);
 				double newBalance = newAccount.getBalance() + deposit;
 				newAccount.setBalance(newBalance);
 				newAccount.getTransactions().add(deposits);
@@ -1130,7 +1078,6 @@ public class BankTest {
 			int withSecond = 11;
 			double withdraw = 300.00;
 			for(int i=0; i<=4; i++) {
-				Date withdrawDates = new Date();
 				Calendar withdrawCal = Calendar.getInstance();
 				withdrawCal.set(Calendar.MONTH, month2);
 				withdrawCal.set(Calendar.DATE, day2);
@@ -1138,10 +1085,9 @@ public class BankTest {
 				withdrawCal.set(Calendar.HOUR,withHour);
 		        withdrawCal.set(Calendar.MINUTE,withMinute);
 		        withdrawCal.set(Calendar.SECOND,withSecond);
-				withdrawDates = withdrawCal.getTime();
 				
 				int uniqueWithdrawId = uniqueNumberCreator.generateUniqueTransactionId();
-				Transaction withdrawals = new Transaction(WITHDRAW, DEBIT, withdraw, uniqueWithdrawId, withdrawDates, newAccount.getBalance() - withdraw);
+				Transaction withdrawals = new Transaction(WITHDRAW, DEBIT, withdraw, uniqueWithdrawId, withdrawCal.getTime(), newAccount.getBalance() - withdraw);
 				double newBalance = newAccount.getBalance() - withdraw;
 				newAccount.setBalance(newBalance);
 				newAccount.getTransactions().add(withdrawals);
@@ -1156,7 +1102,6 @@ public class BankTest {
 			
 			bs.getAccountRepo().getAccounts().add(newAccount);
 			
-			Date fromDate = new Date();
 			Calendar fromCal = Calendar.getInstance();
 			fromCal.set(Calendar.MONTH, 4);
 			fromCal.set(Calendar.DATE, 2);
@@ -1164,7 +1109,6 @@ public class BankTest {
 			fromCal.set(Calendar.HOUR,00);
 	        fromCal.set(Calendar.MINUTE,00);
 	        fromCal.set(Calendar.SECOND,00);
-			fromDate = fromCal.getTime();
 			
 			Date toDate = new Date();
 			Calendar toCal = Calendar.getInstance();
@@ -1176,7 +1120,7 @@ public class BankTest {
 	        toCal.set(Calendar.SECOND,00);
 			toDate = toCal.getTime();
 			
-			Account retrievalAccount = bs.printTransaction(1, fromDate, toDate);
+			Account retrievalAccount = bs.printTransaction(1, fromCal.getTime(), toDate);
 			
 			List<Transaction> comparingTransactions = new ArrayList<>();
 			comparingTransactions.add(newAccount.getTransactions().get(0));
@@ -1218,14 +1162,12 @@ public class BankTest {
 			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
 
 			// set date
-			Date myDate = new Date();
 			Calendar cal = Calendar.getInstance();
 			cal.set(Calendar.MONTH, 4);
 			cal.set(Calendar.DATE, 3);
 			cal.set(Calendar.YEAR, 2017);
-			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, cal.getTime(),
 					newAccount.getBalance() + 500.00);
 			
 			newAccount.setBalance(newTransaction.getBalance());
@@ -1235,15 +1177,13 @@ public class BankTest {
 			int day = 13;
 			double deposit = 200.00;
 			for(int i=0; i<=5; i++) {
-				Date depositDates = new Date();
 				Calendar depositCal = Calendar.getInstance();
 				depositCal.set(Calendar.MONTH, month);
 				depositCal.set(Calendar.DATE, day);
 				depositCal.set(Calendar.YEAR, 2017);
-				depositDates = depositCal.getTime();
 				
 				int uniqueDepositId = uniqueNumberCreator.generateUniqueTransactionId();
-				Transaction deposits = new Transaction(DEPOSIT, DEBIT, deposit, uniqueDepositId, depositDates, newAccount.getBalance() + deposit);
+				Transaction deposits = new Transaction(DEPOSIT, DEBIT, deposit, uniqueDepositId, cal.getTime(), newAccount.getBalance() + deposit);
 				double newBalance = newAccount.getBalance() + deposit;
 				newAccount.setBalance(newBalance);
 				newAccount.getTransactions().add(deposits);
@@ -1257,15 +1197,13 @@ public class BankTest {
 			int day2 = 23;
 			double withdraw = 300.00;
 			for(int i=0; i<=4; i++) {
-				Date withdrawDates = new Date();
 				Calendar withdrawCal = Calendar.getInstance();
 				withdrawCal.set(Calendar.MONTH, month2);
 				withdrawCal.set(Calendar.DATE, day2);
 				withdrawCal.set(Calendar.YEAR, 2017);
-				withdrawDates = withdrawCal.getTime();
 				
 				int uniqueWithdrawId = uniqueNumberCreator.generateUniqueTransactionId();
-				Transaction withdrawals = new Transaction(WITHDRAW, DEBIT, withdraw, uniqueWithdrawId, withdrawDates, newAccount.getBalance() - withdraw);
+				Transaction withdrawals = new Transaction(WITHDRAW, DEBIT, withdraw, uniqueWithdrawId, withdrawCal.getTime(), newAccount.getBalance() - withdraw);
 				double newBalance = newAccount.getBalance() - withdraw;
 				newAccount.setBalance(newBalance);
 				newAccount.getTransactions().add(withdrawals);
@@ -1277,21 +1215,17 @@ public class BankTest {
 			
 			bs.getAccountRepo().getAccounts().add(newAccount);
 			
-			Date fromDate = new Date();
 			Calendar fromCal = Calendar.getInstance();
 			fromCal.set(Calendar.MONTH, 4);
 			fromCal.set(Calendar.DATE, 3);
 			fromCal.set(Calendar.YEAR, 2017);
-			fromDate = fromCal.getTime();
 			
-			Date toDate = new Date();
 			Calendar toCal = Calendar.getInstance();
 			toCal.set(Calendar.MONTH, 10);
 			toCal.set(Calendar.DATE, 30);
 			toCal.set(Calendar.YEAR, 2017);
-			toDate = toCal.getTime();
 			
-			 bs.printTransaction(21, fromDate, toDate);
+			 bs.printTransaction(21, fromCal.getTime(), toCal.getTime());
 			
 	}
 	
