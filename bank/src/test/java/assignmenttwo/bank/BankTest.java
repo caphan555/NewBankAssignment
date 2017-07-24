@@ -432,7 +432,7 @@ public class BankTest {
 			List<Transaction> transactions = new ArrayList<>();
 			ITransactionRepo trp = new TransactionRepo(transactions);
 
-			List<Account> accounts = new ArrayList<Account>();
+			List<Account> accounts = new ArrayList<>();
 			IAccountRepo arp = new AccountRepo(accounts);
 
 			IBankService bs = new BankService(arp, trp, urp);
@@ -447,14 +447,12 @@ public class BankTest {
 			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
 
 			// set date
-			Date myDate = new Date();
 			Calendar cal = Calendar.getInstance();
 			cal.set(Calendar.MONTH, 4);
 			cal.set(Calendar.DATE, 3);
 			cal.set(Calendar.YEAR, 2017);
-			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, cal.getTime(),
 					newAccount.getBalance() + 500.00);
 			
 			newAccount.setBalance(newTransaction.getBalance());
@@ -1009,7 +1007,7 @@ public class BankTest {
 			List<User> users = new ArrayList<>();
 			IUserRepo urp = new UserRepo(users);
 
-			List<Transaction> transactions = new ArrayList<Transaction>();
+			List<Transaction> transactions = new ArrayList<>();
 			ITransactionRepo trp = new TransactionRepo(transactions);
 
 			List<Account> accounts = new ArrayList<>();
@@ -1109,7 +1107,6 @@ public class BankTest {
 	        fromCal.set(Calendar.MINUTE,00);
 	        fromCal.set(Calendar.SECOND,00);
 			
-			Date toDate = new Date();
 			Calendar toCal = Calendar.getInstance();
 			toCal.set(Calendar.MONTH, 10);
 			toCal.set(Calendar.DATE, 30);
@@ -1117,9 +1114,8 @@ public class BankTest {
 			toCal.set(Calendar.HOUR,00);
 	        toCal.set(Calendar.MINUTE,00);
 	        toCal.set(Calendar.SECOND,00);
-			toDate = toCal.getTime();
 			
-			Account retrievalAccount = bs.printTransaction(1, fromCal.getTime(), toDate);
+			Account retrievalAccount = bs.printTransaction(1, fromCal.getTime(), toCal.getTime());
 			
 			List<Transaction> comparingTransactions = new ArrayList<>();
 			comparingTransactions.add(newAccount.getTransactions().get(0));
