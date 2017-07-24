@@ -28,13 +28,13 @@ import service.IBankService;
 import utilities.CreateUniqueNumber;
 
 public class BankTest {
-	private final static String SUCCESS = "success";
-	private final static String DEPOSIT = "Deposit";
-	private final static String WITHDRAW= "Withdraw";
-	private final static String OPENING_NEW_ACCOUNT = "Opening a new account.";
-	private final static String DEBIT = "debit";
-	private final static String CREDIT = "credit";
-	private final static String TEST_USERNAME = "John";
+	private static final String SUCCESS = "success";
+	private static final  String DEPOSIT = "Deposit";
+	private static final String WITHDRAW= "Withdraw";
+	private static final String OPENING_NEW_ACCOUNT = "Opening a new account.";
+	private static final String DEBIT = "debit";
+	private static final String CREDIT = "credit";
+	private static final String TEST_USERNAME = "John";
 	
 	@Test
 	public void testCreateUserSuccess() {

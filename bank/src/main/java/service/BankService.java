@@ -22,8 +22,8 @@ public class BankService implements IBankService {
 	private IAccountRepo accountRepo;
 	private ITransactionRepo transactionRepo;
 	private IUserRepo userRepo;
-	private final static String SUCCESS = "success";
-	private final static String FAILURE = "failure";
+	private static final String SUCCESS = "success";
+	private static final String FAILURE = "failure";
 	
 	
 	public BankService(IAccountRepo accountRepo, ITransactionRepo transactionRepo, IUserRepo userRepo) {
@@ -40,9 +40,8 @@ public class BankService implements IBankService {
 		}
 		
 		User newUser = new User(name);
-		String result = this.getUserRepo().saveUser(newUser);
 		
-		return result;
+		return this.getUserRepo().saveUser(newUser);
 	}
 	
 	public String createAccount(Account newAccount) throws InvalidStartAccountAmountException {
@@ -56,8 +55,7 @@ public class BankService implements IBankService {
 		Transaction transaction = newAccount.getTransactions().get(0);
 		String transactionResult = this.getTransactionRepo().saveTransaction(transaction);
 		if(SUCCESS.equals(transactionResult)) {
-			String accountResult = this.getAccountRepo().saveAccount(newAccount);
-			return accountResult;
+			return this.getAccountRepo().saveAccount(newAccount);
 		} else {
 			return FAILURE;
 		}
@@ -162,9 +160,8 @@ public class BankService implements IBankService {
 		transferringAccount.getTransactions().add(transferringTransaction);
 		receivingAccount.getTransactions().add(receivingTransaction);
 		
-		Account returningAccount = new Account(transferringAccount.getBalance(), null, transferringAccount.getAccountNo(), transferringAccount.getUser());
 		
-		return returningAccount;
+		return new Account(transferringAccount.getBalance(), null, transferringAccount.getAccountNo(), transferringAccount.getUser());
 	}
 
 	public Account printTransaction(int accountNumber, Date fromDate, Date toDate) throws AccountDoesNotExistException {
@@ -187,9 +184,8 @@ public class BankService implements IBankService {
 			}
 		}
 		
-		Account returningAccount = new Account(retrievedAccount.getBalance(), printingTransactions, retrievedAccount.getAccountNo(), retrievedAccount.getUser());
 		
-		return returningAccount;
+		return new Account(retrievedAccount.getBalance(), printingTransactions, retrievedAccount.getAccountNo(), retrievedAccount.getUser());
 	}
 
 	public Account printTransaction(int accountNumber) throws AccountDoesNotExistException {
@@ -209,9 +205,8 @@ public class BankService implements IBankService {
 			--transactionSize;
 		}
 		
-		Account returningAccount = new Account(retrievedAccount.getBalance(), printingTransactions, retrievedAccount.getAccountNo(), retrievedAccount.getUser());
 		
-		return returningAccount;
+		return new Account(retrievedAccount.getBalance(), printingTransactions, retrievedAccount.getAccountNo(), retrievedAccount.getUser());
 	}
 
 	public IAccountRepo getAccountRepo() {
