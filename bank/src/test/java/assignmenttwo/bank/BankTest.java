@@ -39,7 +39,7 @@ public class BankTest {
 	
 	@Test
 	public void testCreateUserSuccess() {
-		List<User> users = new ArrayList<User>();
+		List<User> users = new ArrayList<>();
 		IUserRepo urp = new UserRepo(users);
 
 		List<Transaction> transactions = new ArrayList<Transaction>();
@@ -57,7 +57,7 @@ public class BankTest {
 
 	@Test
 	public void testCannotCreateEmptyUser() {
-		List<User> users = new ArrayList<User>();
+		List<User> users = new ArrayList<>();
 		IUserRepo urp = new UserRepo(users);
 
 		List<Transaction> transactions = new ArrayList<Transaction>();
@@ -76,13 +76,13 @@ public class BankTest {
 	@Test(expected = java.lang.NullPointerException.class)
 	public void testCannotCreateNullUser() throws NullPointerException {
 
-			List<User> users = new ArrayList<User>();
+			List<User> users = new ArrayList<>();
 			IUserRepo urp = new UserRepo(users);
 
-			List<Transaction> transactions = new ArrayList<Transaction>();
+			List<Transaction> transactions = new ArrayList<>();
 			ITransactionRepo trp = new TransactionRepo(transactions);
 
-			List<Account> accounts = new ArrayList<Account>();
+			List<Account> accounts = new ArrayList<>();
 			IAccountRepo arp = new AccountRepo(accounts);
 
 			IBankService bs = new BankService(arp, trp, urp);
@@ -97,7 +97,7 @@ public class BankTest {
 			List<User> users = new ArrayList<User>();
 			IUserRepo urp = new UserRepo(users);
 
-			List<Transaction> transactions = new ArrayList<Transaction>();
+			List<Transaction> transactions = new ArrayList<>();
 			ITransactionRepo trp = new TransactionRepo(transactions);
 
 			List<Account> accounts = new ArrayList<Account>();
@@ -137,13 +137,13 @@ public class BankTest {
 	public void testCannotCreateNullAccount() throws NullPointerException, InvalidStartAccountAmountException{
 
 		
-			List<User> users = new ArrayList<User>();
+			List<User> users = new ArrayList<>();
 			IUserRepo urp = new UserRepo(users);
 
-			List<Transaction> transactions = new ArrayList<Transaction>();
+			List<Transaction> transactions = new ArrayList<>();
 			ITransactionRepo trp = new TransactionRepo(transactions);
 
-			List<Account> accounts = new ArrayList<Account>();
+			List<Account> accounts = new ArrayList<>();
 			IAccountRepo arp = new AccountRepo(accounts);
 
 			IBankService bs = new BankService(arp, trp, urp);
@@ -158,13 +158,13 @@ public class BankTest {
 			throws NullPointerException, InvalidStartAccountAmountException {
 
 		
-			List<User> users = new ArrayList<User>();
+			List<User> users = new ArrayList<>();
 			IUserRepo urp = new UserRepo(users);
 
-			List<Transaction> transactions = new ArrayList<Transaction>();
+			List<Transaction> transactions = new ArrayList<>();
 			ITransactionRepo trp = new TransactionRepo(transactions);
 
-			List<Account> accounts = new ArrayList<Account>();
+			List<Account> accounts = new ArrayList<>();
 			IAccountRepo arp = new AccountRepo(accounts);
 
 			IBankService bs = new BankService(arp, trp, urp);
@@ -176,7 +176,7 @@ public class BankTest {
 			CreateUniqueNumber uniqueNumberCreator = new CreateUniqueNumber();
 
 			int uniqueAId = uniqueNumberCreator.generateUniqueAccNum();
-			Account newAccount = new Account(0.00, new ArrayList<Transaction>(), uniqueAId, user);
+			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
 
 			// set date
 			Date myDate = new Date();
@@ -219,7 +219,7 @@ public class BankTest {
 			CreateUniqueNumber uniqueNumberCreator = new CreateUniqueNumber();
 
 			int uniqueAId = uniqueNumberCreator.generateUniqueAccNum();
-			Account newAccount = new Account(0.00, new ArrayList<Transaction>(), uniqueAId, user);
+			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
 
 			// set date
 			Date myDate = new Date();
@@ -269,7 +269,7 @@ public class BankTest {
 			CreateUniqueNumber uniqueNumberCreator = new CreateUniqueNumber();
 
 			int uniqueAId = uniqueNumberCreator.generateUniqueAccNum();
-			Account newAccount = new Account(0.00, new ArrayList<Transaction>(), uniqueAId, user);
+			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
 
 			// set date
 			Date myDate = new Date();
@@ -312,7 +312,7 @@ public class BankTest {
 			CreateUniqueNumber uniqueNumberCreator = new CreateUniqueNumber();
 
 			int uniqueAId = uniqueNumberCreator.generateUniqueAccNum();
-			Account newAccount = new Account(0.00, new ArrayList<Transaction>(), uniqueAId, user);
+			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
 
 			// set date
 			Date myDate = new Date();
@@ -348,13 +348,13 @@ public class BankTest {
 					InvalidStartAccountAmountException, InsufficientAmountToDepositException{
 
 		
-			List<User> users = new ArrayList<User>();
+			List<User> users = new ArrayList<>();
 			IUserRepo urp = new UserRepo(users);
 
-			List<Transaction> transactions = new ArrayList<Transaction>();
+			List<Transaction> transactions = new ArrayList<>();
 			ITransactionRepo trp = new TransactionRepo(transactions);
 
-			List<Account> accounts = new ArrayList<Account>();
+			List<Account> accounts = new ArrayList<>();
 			IAccountRepo arp = new AccountRepo(accounts);
 
 			IBankService bs = new BankService(arp, trp, urp);
@@ -366,7 +366,7 @@ public class BankTest {
 			CreateUniqueNumber uniqueNumberCreator = new CreateUniqueNumber();
 
 			int uniqueAId = uniqueNumberCreator.generateUniqueAccNum();
-			Account newAccount = new Account(0.00, new ArrayList<Transaction>(), uniqueAId, user);
+			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
 
 			// set date
 			Date myDate = new Date();
@@ -396,10 +396,10 @@ public class BankTest {
 			List<User> users = new ArrayList<User>();
 			IUserRepo urp = new UserRepo(users);
 
-			List<Transaction> transactions = new ArrayList<Transaction>();
+			List<Transaction> transactions = new ArrayList<>();
 			ITransactionRepo trp = new TransactionRepo(transactions);
 
-			List<Account> accounts = new ArrayList<Account>();
+			List<Account> accounts = new ArrayList<>();
 			IAccountRepo arp = new AccountRepo(accounts);
 
 			IBankService bs = new BankService(arp, trp, urp);
@@ -411,7 +411,7 @@ public class BankTest {
 			CreateUniqueNumber uniqueNumberCreator = new CreateUniqueNumber();
 
 			int uniqueAId = uniqueNumberCreator.generateUniqueAccNum();
-			Account newAccount = new Account(0.00, new ArrayList<Transaction>(), uniqueAId, user);
+			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
 
 			// set date
 			Date myDate = new Date();
@@ -442,7 +442,7 @@ public class BankTest {
 			List<User> users = new ArrayList<User>();
 			IUserRepo urp = new UserRepo(users);
 
-			List<Transaction> transactions = new ArrayList<Transaction>();
+			List<Transaction> transactions = new ArrayList<>();
 			ITransactionRepo trp = new TransactionRepo(transactions);
 
 			List<Account> accounts = new ArrayList<Account>();
@@ -457,7 +457,7 @@ public class BankTest {
 			CreateUniqueNumber uniqueNumberCreator = new CreateUniqueNumber();
 
 			int uniqueAId = uniqueNumberCreator.generateUniqueAccNum();
-			Account newAccount = new Account(0.00, new ArrayList<Transaction>(), uniqueAId, user);
+			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
 
 			// set date
 			Date myDate = new Date();
@@ -497,10 +497,10 @@ public class BankTest {
 			List<User> users = new ArrayList<User>();
 			IUserRepo urp = new UserRepo(users);
 
-			List<Transaction> transactions = new ArrayList<Transaction>();
+			List<Transaction> transactions = new ArrayList<>();
 			ITransactionRepo trp = new TransactionRepo(transactions);
 
-			List<Account> accounts = new ArrayList<Account>();
+			List<Account> accounts = new ArrayList<>();
 			IAccountRepo arp = new AccountRepo(accounts);
 
 			IBankService bs = new BankService(arp, trp, urp);
@@ -512,7 +512,7 @@ public class BankTest {
 			CreateUniqueNumber uniqueNumberCreator = new CreateUniqueNumber();
 
 			int uniqueAId = uniqueNumberCreator.generateUniqueAccNum();
-			Account newAccount = new Account(0.00, new ArrayList<Transaction>(), uniqueAId, user);
+			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
 
 			// set date
 			Date myDate = new Date();
@@ -541,10 +541,10 @@ public class BankTest {
 			InsufficientFundsWithdrawalException{
 
 		
-			List<User> users = new ArrayList<User>();
+			List<User> users = new ArrayList<>();
 			IUserRepo urp = new UserRepo(users);
 
-			List<Transaction> transactions = new ArrayList<Transaction>();
+			List<Transaction> transactions = new ArrayList<>();
 			ITransactionRepo trp = new TransactionRepo(transactions);
 
 			List<Account> accounts = new ArrayList<Account>();
@@ -559,7 +559,7 @@ public class BankTest {
 			CreateUniqueNumber uniqueNumberCreator = new CreateUniqueNumber();
 
 			int uniqueAId = uniqueNumberCreator.generateUniqueAccNum();
-			Account newAccount = new Account(0.00, new ArrayList<Transaction>(), uniqueAId, user);
+			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
 
 			// set date
 			Date myDate = new Date();
@@ -591,10 +591,10 @@ public class BankTest {
 			List<User> users = new ArrayList<User>();
 			IUserRepo urp = new UserRepo(users);
 
-			List<Transaction> transactions = new ArrayList<Transaction>();
+			List<Transaction> transactions = new ArrayList<>();
 			ITransactionRepo trp = new TransactionRepo(transactions);
 
-			List<Account> accounts = new ArrayList<Account>();
+			List<Account> accounts = new ArrayList<>();
 			IAccountRepo arp = new AccountRepo(accounts);
 
 			IBankService bs = new BankService(arp, trp, urp);
@@ -606,7 +606,7 @@ public class BankTest {
 			CreateUniqueNumber uniqueNumberCreator = new CreateUniqueNumber();
 
 			int uniqueAId = uniqueNumberCreator.generateUniqueAccNum();
-			Account newAccount = new Account(0.00, new ArrayList<Transaction>(), uniqueAId, user);
+			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
 
 			// set date
 			Date myDate = new Date();
@@ -637,10 +637,10 @@ public class BankTest {
 			List<User> users = new ArrayList<User>();
 			IUserRepo urp = new UserRepo(users);
 
-			List<Transaction> transactions = new ArrayList<Transaction>();
+			List<Transaction> transactions = new ArrayList<>();
 			ITransactionRepo trp = new TransactionRepo(transactions);
 
-			List<Account> accounts = new ArrayList<Account>();
+			List<Account> accounts = new ArrayList<>();
 			IAccountRepo arp = new AccountRepo(accounts);
 
 			IBankService bs = new BankService(arp, trp, urp);
@@ -652,7 +652,7 @@ public class BankTest {
 			CreateUniqueNumber uniqueNumberCreator = new CreateUniqueNumber();
 
 			int uniqueAId = uniqueNumberCreator.generateUniqueAccNum();
-			Account newAccount = new Account(0.00, new ArrayList<Transaction>(), uniqueAId, user);
+			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
 
 			// set date
 			Date myDate = new Date();
@@ -675,7 +675,7 @@ public class BankTest {
 
 
 			int uniqueAId2 = uniqueNumberCreator.generateUniqueAccNum();
-			Account newAccount2 = new Account(0.00, new ArrayList<Transaction>(), uniqueAId2, secondUser);
+			Account newAccount2 = new Account(0.00, new ArrayList<>(), uniqueAId2, secondUser);
 
 			// set date
 			Date myDate2 = new Date();
@@ -719,13 +719,13 @@ public class BankTest {
 			InvalidStartAccountAmountException, InsufficientFundsToTransferException {
 
 		
-			List<User> users = new ArrayList<User>();
+			List<User> users = new ArrayList<>();
 			IUserRepo urp = new UserRepo(users);
 
-			List<Transaction> transactions = new ArrayList<Transaction>();
+			List<Transaction> transactions = new ArrayList<>();
 			ITransactionRepo trp = new TransactionRepo(transactions);
 
-			List<Account> accounts = new ArrayList<Account>();
+			List<Account> accounts = new ArrayList<>();
 			IAccountRepo arp = new AccountRepo(accounts);
 
 			IBankService bs = new BankService(arp, trp, urp);
@@ -737,7 +737,7 @@ public class BankTest {
 			CreateUniqueNumber uniqueNumberCreator = new CreateUniqueNumber();
 
 			int uniqueAId = uniqueNumberCreator.generateUniqueAccNum();
-			Account newAccount = new Account(0.00, new ArrayList<Transaction>(), uniqueAId, user);
+			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
 
 			// set date
 			Date myDate = new Date();
@@ -760,7 +760,7 @@ public class BankTest {
 
 
 			int uniqueAId2 = uniqueNumberCreator.generateUniqueAccNum();
-			Account newAccount2 = new Account(0.00, new ArrayList<Transaction>(), uniqueAId2, secondUser);
+			Account newAccount2 = new Account(0.00, new ArrayList<>(), uniqueAId2, secondUser);
 
 			// set date
 			Date myDate2 = new Date();
@@ -797,13 +797,13 @@ public class BankTest {
 			InvalidStartAccountAmountException, InsufficientFundsToTransferException {
 
 		
-			List<User> users = new ArrayList<User>();
+			List<User> users = new ArrayList<>();
 			IUserRepo urp = new UserRepo(users);
 
-			List<Transaction> transactions = new ArrayList<Transaction>();
+			List<Transaction> transactions = new ArrayList<>();
 			ITransactionRepo trp = new TransactionRepo(transactions);
 
-			List<Account> accounts = new ArrayList<Account>();
+			List<Account> accounts = new ArrayList<>();
 			IAccountRepo arp = new AccountRepo(accounts);
 
 			IBankService bs = new BankService(arp, trp, urp);
@@ -815,7 +815,7 @@ public class BankTest {
 			CreateUniqueNumber uniqueNumberCreator = new CreateUniqueNumber();
 
 			int uniqueAId = uniqueNumberCreator.generateUniqueAccNum();
-			Account newAccount = new Account(0.00, new ArrayList<Transaction>(), uniqueAId, user);
+			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
 
 			// set date
 			Date myDate = new Date();
@@ -874,7 +874,7 @@ public class BankTest {
 			List<User> users = new ArrayList<User>();
 			IUserRepo urp = new UserRepo(users);
 
-			List<Transaction> transactions = new ArrayList<Transaction>();
+			List<Transaction> transactions = new ArrayList<>();
 			ITransactionRepo trp = new TransactionRepo(transactions);
 
 			List<Account> accounts = new ArrayList<Account>();
@@ -967,13 +967,13 @@ public class BankTest {
 				AccountDoesNotExistException, InvalidStartAccountAmountException,
 				InsufficientAmountToDepositException{
 		
-			List<User> users = new ArrayList<User>();
+			List<User> users = new ArrayList<>();
 			IUserRepo urp = new UserRepo(users);
 
-			List<Transaction> transactions = new ArrayList<Transaction>();
+			List<Transaction> transactions = new ArrayList<>();
 			ITransactionRepo trp = new TransactionRepo(transactions);
 
-			List<Account> accounts = new ArrayList<Account>();
+			List<Account> accounts = new ArrayList<>();
 			IAccountRepo arp = new AccountRepo(accounts);
 
 			IBankService bs = new BankService(arp, trp, urp);
@@ -1055,13 +1055,13 @@ public class BankTest {
 	public void testPrintTransactionPeriodSuccess() throws AccountDoesNotExistException, 
 	InvalidStartAccountAmountException, InsufficientAmountToDepositException{
 		
-			List<User> users = new ArrayList<User>();
+			List<User> users = new ArrayList<>();
 			IUserRepo urp = new UserRepo(users);
 
 			List<Transaction> transactions = new ArrayList<Transaction>();
 			ITransactionRepo trp = new TransactionRepo(transactions);
 
-			List<Account> accounts = new ArrayList<Account>();
+			List<Account> accounts = new ArrayList<>();
 			IAccountRepo arp = new AccountRepo(accounts);
 
 			IBankService bs = new BankService(arp, trp, urp);
@@ -1178,7 +1178,7 @@ public class BankTest {
 			
 			Account retrievalAccount = bs.printTransaction(1, fromDate, toDate);
 			
-			List<Transaction> comparingTransactions = new ArrayList<Transaction>();
+			List<Transaction> comparingTransactions = new ArrayList<>();
 			comparingTransactions.add(newAccount.getTransactions().get(0));
 		
 			for(int r=5; r<=11; r++) {
@@ -1197,13 +1197,13 @@ public class BankTest {
 	public void testInvalidAccountPrintTransactionPeriod() throws AccountDoesNotExistException, 
 	InvalidStartAccountAmountException, InsufficientAmountToDepositException{
 		
-			List<User> users = new ArrayList<User>();
+			List<User> users = new ArrayList<>();
 			IUserRepo urp = new UserRepo(users);
 
-			List<Transaction> transactions = new ArrayList<Transaction>();
+			List<Transaction> transactions = new ArrayList<>();
 			ITransactionRepo trp = new TransactionRepo(transactions);
 
-			List<Account> accounts = new ArrayList<Account>();
+			List<Account> accounts = new ArrayList<>();
 			IAccountRepo arp = new AccountRepo(accounts);
 
 			IBankService bs = new BankService(arp, trp, urp);
@@ -1215,7 +1215,7 @@ public class BankTest {
 			CreateUniqueNumber uniqueNumberCreator = new CreateUniqueNumber();
 
 			int uniqueAId = uniqueNumberCreator.generateUniqueAccNum();
-			Account newAccount = new Account(0.00, new ArrayList<Transaction>(), uniqueAId, user);
+			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
 
 			// set date
 			Date myDate = new Date();

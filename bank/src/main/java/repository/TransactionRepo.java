@@ -7,7 +7,7 @@ import pojo.Transaction;
 public class TransactionRepo implements ITransactionRepo {
 
 	private List<Transaction> transactions;
-	private final static String SUCCESS = "success";
+	private static final String SUCCESS = "success";
 	
 	public TransactionRepo(List<Transaction> transactions) {
 		this.transactions = transactions;

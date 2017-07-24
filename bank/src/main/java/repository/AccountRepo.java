@@ -21,12 +21,10 @@ public class AccountRepo implements IAccountRepo {
 	}
 
 	public Account findAccount(int accountNumber) {
-		Account retrievedAccount = new Account();
-		
-		for(int i=0; i<this.getAccounts().size(); i++) {
-			if(this.getAccounts().get(i).getAccountNo() == accountNumber) {
-				retrievedAccount = this.getAccounts().get(i);
-				return retrievedAccount;
+	
+		for(Account a: this.getAccounts()) {
+			if(a.getAccountNo() == accountNumber) {
+				return a;
 			}
 		}
 		

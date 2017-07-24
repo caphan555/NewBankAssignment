@@ -94,13 +94,11 @@ public class BankService implements IBankService {
 		double newBalance = currentBalance - amount;
 		retrievedAccount.setBalance(newBalance);
 		
-		Date withdrawDate = new Date();
 		Calendar cal2 = Calendar.getInstance();
 		cal2.set(Calendar.MONTH, 7);
 		cal2.set(Calendar.DATE, 26);
 		cal2.set(Calendar.YEAR, 2017);
-		withdrawDate = cal2.getTime();
-		Transaction withdrawTransaction = new Transaction("Withdraw", "debit", 300.00, 2, withdrawDate,
+		Transaction withdrawTransaction = new Transaction("Withdraw", "debit", 300.00, 2, cal2.getTime(),
 				retrievedAccount.getBalance());
 		retrievedAccount.getTransactions().add(withdrawTransaction);
 		this.getTransactionRepo().saveTransaction(withdrawTransaction);
@@ -122,13 +120,11 @@ public class BankService implements IBankService {
 		double newBalance = currentBalance + amount;
 		retrievedAccount.setBalance(newBalance);
 				
-		Date depositDate = new Date();
 		Calendar cal2 = Calendar.getInstance();
 		cal2.set(Calendar.MONTH, 7);
 		cal2.set(Calendar.DATE, 26);
 		cal2.set(Calendar.YEAR, 2017);
-		depositDate = cal2.getTime();
-		Transaction depositTransaction = new Transaction("Deposit", "credit", 300.00, 2, depositDate,
+		Transaction depositTransaction = new Transaction("Deposit", "credit", 300.00, 2, cal2.getTime(),
 				retrievedAccount.getBalance());
 		retrievedAccount.getTransactions().add(depositTransaction);
 		this.getTransactionRepo().saveTransaction(depositTransaction);
