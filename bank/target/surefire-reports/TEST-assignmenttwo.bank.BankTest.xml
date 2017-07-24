@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="22" failures="0" name="assignmenttwo.bank.BankTest" time="0.024" errors="0" skipped="0">
+<testsuite tests="22" failures="0" name="assignmenttwo.bank.BankTest" time="0.023" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_131\jre\bin"/>
     <property name="java.vm.version" value="25.131-b11"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="maven.multiModuleProjectDirectory" value="D:\Bank Assignment Maven\bank"/>
+    <property name="maven.multiModuleProjectDirectory" value="D:\Bank Assignment Maven git\bank"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=";"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="Service Pack 1"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="D:\Bank Assignment Maven\bank"/>
+    <property name="user.dir" value="D:\Bank Assignment Maven git\bank"/>
     <property name="java.runtime.version" value="1.8.0_131-b11"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_131\jre\lib\endorsed"/>
@@ -27,7 +27,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 7"/>
-    <property name="classworlds.conf" value="D:\Bank Assignment Maven\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf1565019247394227376.tmp"/>
+    <property name="classworlds.conf" value="D:\Bank Assignment Maven\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf3367730631624636103.tmp"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
     <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_131\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jre1.8.0_131/bin/server;C:/Program Files/Java/jre1.8.0_131/bin;C:/Program Files/Java/jre1.8.0_131/lib/amd64;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files\CapgeminiScripts\Support Tools\;C:\Program Files\Java\jdk1.8.0_131\bin;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files\CapgeminiScripts\Support Tools\;C:\Users\zhenho\AppData\Local\Programs\Git\cmd;D:\sts-bundle\sts-3.8.4.RELEASE;;."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
@@ -44,7 +44,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="C:\Program Files\Java\jdk1.8.0_131\jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -B test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -B test compile"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -53,7 +53,7 @@
     <property name="java.ext.dirs" value="C:\Program Files\Java\jdk1.8.0_131\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
     <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.8.0_131\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_131\jre\classes"/>
     <property name="java.vendor" value="Oracle Corporation"/>
-    <property name="maven.home" value="D:\Bank Assignment Maven\bank\EMBEDDED"/>
+    <property name="maven.home" value="D:\Bank Assignment Maven git\bank\EMBEDDED"/>
     <property name="file.separator" value="\"/>
     <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -61,25 +61,25 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="assignmenttwo.bank.BankTest" name="testDepositSuccess" time="0.016"/>
-  <testcase classname="assignmenttwo.bank.BankTest" name="testAccountDoesNotExistPrintTransactionLastTen" time="0.002"/>
-  <testcase classname="assignmenttwo.bank.BankTest" name="testAccountDoesNotExistForTransfer" time="0"/>
-  <testcase classname="assignmenttwo.bank.BankTest" name="testAccountDoesNotExist" time="0.001"/>
-  <testcase classname="assignmenttwo.bank.BankTest" name="testCannotCreateEmptyUser" time="0"/>
-  <testcase classname="assignmenttwo.bank.BankTest" name="testInsufficientAmountToDeposit" time="0.001"/>
+  <testcase classname="assignmenttwo.bank.BankTest" name="testDepositSuccess" time="0.014"/>
+  <testcase classname="assignmenttwo.bank.BankTest" name="testAccountDoesNotExistPrintTransactionLastTen" time="0.001"/>
+  <testcase classname="assignmenttwo.bank.BankTest" name="testAccountDoesNotExistForTransfer" time="0.001"/>
+  <testcase classname="assignmenttwo.bank.BankTest" name="testAccountDoesNotExist" time="0"/>
+  <testcase classname="assignmenttwo.bank.BankTest" name="testCannotCreateEmptyUser" time="0.005"/>
+  <testcase classname="assignmenttwo.bank.BankTest" name="testInsufficientAmountToDeposit" time="0"/>
   <testcase classname="assignmenttwo.bank.BankTest" name="testTransferSuccess" time="0"/>
   <testcase classname="assignmenttwo.bank.BankTest" name="testInsufficientFundsTransfer" time="0"/>
   <testcase classname="assignmenttwo.bank.BankTest" name="testPrintTransactionPeriodSuccess" time="0"/>
   <testcase classname="assignmenttwo.bank.BankTest" name="testCannotCreateNullAccount" time="0"/>
   <testcase classname="assignmenttwo.bank.BankTest" name="testInsufficientFundsWithdrawal" time="0"/>
   <testcase classname="assignmenttwo.bank.BankTest" name="testCreateAccountSuccess" time="0"/>
-  <testcase classname="assignmenttwo.bank.BankTest" name="testInvalidAccountWithdrawal" time="0"/>
+  <testcase classname="assignmenttwo.bank.BankTest" name="testInvalidAccountWithdrawal" time="0.001"/>
   <testcase classname="assignmenttwo.bank.BankTest" name="testInvalidAccountToDeposit" time="0"/>
   <testcase classname="assignmenttwo.bank.BankTest" name="testCreateUserSuccess" time="0"/>
-  <testcase classname="assignmenttwo.bank.BankTest" name="testExceedDailyLimitWithdrawal" time="0.001"/>
+  <testcase classname="assignmenttwo.bank.BankTest" name="testExceedDailyLimitWithdrawal" time="0"/>
   <testcase classname="assignmenttwo.bank.BankTest" name="testCannotCreateNullUser" time="0"/>
-  <testcase classname="assignmenttwo.bank.BankTest" name="testInvalidAccountPrintTransactionPeriod" time="0.001"/>
-  <testcase classname="assignmenttwo.bank.BankTest" name="testAccountShowBalanceSuccess" time="0.001"/>
+  <testcase classname="assignmenttwo.bank.BankTest" name="testInvalidAccountPrintTransactionPeriod" time="0"/>
+  <testcase classname="assignmenttwo.bank.BankTest" name="testAccountShowBalanceSuccess" time="0"/>
   <testcase classname="assignmenttwo.bank.BankTest" name="testInsufficientAmountToCreateAccount" time="0"/>
   <testcase classname="assignmenttwo.bank.BankTest" name="testPrintTransactionLastTenSuccess" time="0.001"/>
   <testcase classname="assignmenttwo.bank.BankTest" name="testWithdrawalSuccess" time="0"/>
