@@ -36,6 +36,7 @@ public class BankTest {
 	private static final String DEBIT = "debit";
 	private static final String CREDIT = "credit";
 	private static final String TEST_USERNAME = "John";
+	private static final String TEST_SECOND_USERNAME = "Ramal";
 	
 	@Test
 	public void testCreateUserSuccess() {
@@ -74,7 +75,7 @@ public class BankTest {
 	}
 
 	@Test(expected = java.lang.NullPointerException.class)
-	public void testCannotCreateNullUser() throws NullPointerException {
+	public void testCannotCreateNullUser() {
 
 			List<User> users = new ArrayList<>();
 			IUserRepo urp = new UserRepo(users);
@@ -197,7 +198,7 @@ public class BankTest {
 	public void testAccountShowBalanceSuccess() throws InvalidStartAccountAmountException, AccountDoesNotExistException{
 
 		
-			List<User> users = new ArrayList<User>();
+			List<User> users = new ArrayList<>();
 			IUserRepo urp = new UserRepo(users);
 
 			List<Transaction> transactions = new ArrayList<>();
@@ -245,7 +246,7 @@ public class BankTest {
 	public void testAccountDoesNotExist() throws AccountDoesNotExistException, InvalidStartAccountAmountException{
 
 		
-			ArrayList<User> users = new ArrayList<User>();
+			ArrayList<User> users = new ArrayList<>();
 			IUserRepo urp = new UserRepo(users);
 
 			ArrayList<Transaction> transactions = new ArrayList<>();
@@ -286,7 +287,7 @@ public class BankTest {
 	InvalidStartAccountAmountException, InsufficientAmountToDepositException{
 
 		
-			List<User> users = new ArrayList<User>();
+			List<User> users = new ArrayList<>();
 			IUserRepo urp = new UserRepo(users);
 
 			List<Transaction> transactions = new ArrayList<>();
@@ -359,14 +360,12 @@ public class BankTest {
 			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
 
 			// set date
-			Date myDate = new Date();
 			Calendar cal = Calendar.getInstance();
 			cal.set(Calendar.MONTH, 4);
 			cal.set(Calendar.DATE, 3);
 			cal.set(Calendar.YEAR, 2017);
-			myDate = cal.getTime();
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction("Opening a new account.", "credit", 500.00, uniqueTId, myDate,
+			Transaction newTransaction = new Transaction("Opening a new account.", "credit", 500.00, uniqueTId, cal.getTime(),
 					newAccount.getBalance() + 500.00);
 			
 			newAccount.setBalance(newTransaction.getBalance());
@@ -427,7 +426,7 @@ public class BankTest {
 			InsufficientFundsWithdrawalException{
 
 		
-			List<User> users = new ArrayList<User>();
+			List<User> users = new ArrayList<>();
 			IUserRepo urp = new UserRepo(users);
 
 			List<Transaction> transactions = new ArrayList<>();
@@ -649,7 +648,7 @@ public class BankTest {
 			newAccount.getTransactions().add(newTransaction);
 			
 			//2nd user & account
-			bs.createUser("Ramal");
+			bs.createUser(TEST_SECOND_USERNAME);
 
 			User secondUser = bs.getUserRepo().getUsers().get(1);
 
@@ -728,7 +727,7 @@ public class BankTest {
 			newAccount.getTransactions().add(newTransaction);
 			
 			//2nd user & account
-			 bs.createUser("Ramal");
+			 bs.createUser(TEST_SECOND_USERNAME);
 
 			User secondUser = bs.getUserRepo().getUsers().get(1);
 
@@ -800,7 +799,7 @@ public class BankTest {
 			newAccount.getTransactions().add(newTransaction);
 			
 			//2nd user & account
-			bs.createUser("Ramal");
+			bs.createUser(TEST_SECOND_USERNAME);
 
 			User secondUser = bs.getUserRepo().getUsers().get(1);
 
