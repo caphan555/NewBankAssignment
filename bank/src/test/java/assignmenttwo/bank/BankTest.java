@@ -77,8 +77,9 @@ public class BankTest {
 	}
 
 	@Test
-	public void testCreateAccountSuccess() throws InvalidStartAccountAmountException{
+	public void testCreateAccountSuccess() {
 
+		try{
 			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
@@ -102,20 +103,27 @@ public class BankTest {
 			String createAccountResult = bs.createAccount(newAccount);
 
 			assertEquals(SUCCESS, createAccountResult);
+		} catch(InvalidStartAccountAmountException e) {
+			e.printStackTrace();
+		}
 		
 	}
 
 	@Test(expected = NullPointerException.class)
-	public void testCannotCreateNullAccount() throws InvalidStartAccountAmountException{
+	public void testCannotCreateNullAccount() {
 
+		try{
 			bs.createAccount(null);
+		} catch(InvalidStartAccountAmountException e) {
+			e.printStackTrace();
+		}
 		
 	}
 
 	@Test(expected = exception.InvalidStartAccountAmountException.class)
-	public void testInsufficientAmountToCreateAccount()
-			throws  InvalidStartAccountAmountException {
+	public void testInsufficientAmountToCreateAccount() throws  InvalidStartAccountAmountException{
 
+		
 			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
@@ -137,14 +145,15 @@ public class BankTest {
 			newAccount.getTransactions().add(newTransaction);
 
 			bs.createAccount(newAccount);
-
+		
 		
 
 	}
 
 	@Test
-	public void testAccountShowBalanceSuccess() throws InvalidStartAccountAmountException, AccountDoesNotExistException{
+	public void testAccountShowBalanceSuccess() {
 
+		try{
 			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
@@ -175,12 +184,15 @@ public class BankTest {
 				balanceResult = "failure";
 			}
 			assertEquals(SUCCESS, balanceResult);
-
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Test(expected = exception.AccountDoesNotExistException.class)
-	public void testAccountDoesNotExist() throws AccountDoesNotExistException, InvalidStartAccountAmountException{
+	public void testAccountDoesNotExist() throws AccountDoesNotExistException{
 
+		try{
 			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
@@ -203,13 +215,15 @@ public class BankTest {
 
 			bs.createAccount(newAccount);
 			bs.showBalance(5);
-
+		} catch(InvalidStartAccountAmountException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Test
-	public void testDepositSuccess() throws AccountDoesNotExistException, 
-	InvalidStartAccountAmountException, InsufficientAmountToDepositException{
+	public void testDepositSuccess() {
 
+		try{
 			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
@@ -244,12 +258,15 @@ public class BankTest {
 			}
 			
 			assertEquals("Money successfully deposited!", depositResult);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Test(expected = exception.InsufficientAmountToDepositException.class)
-	public void testInsufficientAmountToDeposit() throws AccountDoesNotExistException, 
-					InvalidStartAccountAmountException, InsufficientAmountToDepositException{
+	public void testInsufficientAmountToDeposit() throws InsufficientAmountToDepositException{
 
+		try{
 			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
@@ -275,12 +292,15 @@ public class BankTest {
 			bs.createAccount(newAccount);
 			
 			bs.deposit(1, -100.00);
+		} catch(AccountDoesNotExistException | InvalidStartAccountAmountException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Test(expected = exception.AccountDoesNotExistException.class)
-	public void testInvalidAccountToDeposit() throws AccountDoesNotExistException, 
-					InvalidStartAccountAmountException, InsufficientAmountToDepositException{
+	public void testInvalidAccountToDeposit() throws AccountDoesNotExistException{
 
+		try{
 			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
@@ -306,13 +326,14 @@ public class BankTest {
 			 bs.createAccount(newAccount);
 			
 			bs.deposit(40, 400.00);
+		} catch(InvalidStartAccountAmountException | InsufficientAmountToDepositException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Test
-	public void testWithdrawalSuccess() throws AccountDoesNotExistException, 
-			InvalidStartAccountAmountException, ExceedDailyWithdrawalAmountException, 
-			InsufficientFundsWithdrawalException{
-
+	public void testWithdrawalSuccess() {
+		try {
 			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
@@ -347,13 +368,15 @@ public class BankTest {
 			}
 			
 			assertEquals("Money successfully withdrew!", depositResult);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Test(expected = exception.ExceedDailyWithdrawalAmountException.class)
-	public void testExceedDailyLimitWithdrawal() throws AccountDoesNotExistException, 
-			InvalidStartAccountAmountException, ExceedDailyWithdrawalAmountException, 
-			InsufficientFundsWithdrawalException{
+	public void testExceedDailyLimitWithdrawal() throws ExceedDailyWithdrawalAmountException{
 
+		try{
 			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
@@ -387,15 +410,16 @@ public class BankTest {
 			}
 			
 			bs.withdraw(1, 800.00);
+		} catch(AccountDoesNotExistException | InvalidStartAccountAmountException | InsufficientFundsWithdrawalException e) {
+			e.printStackTrace();
+		}
 			
 	}
 	
 	@Test(expected = exception.InsufficientFundsWithdrawalException.class)
-	public void testInsufficientFundsWithdrawal() throws AccountDoesNotExistException, 
-			InvalidStartAccountAmountException, ExceedDailyWithdrawalAmountException, 
-			InsufficientFundsWithdrawalException{
+	public void testInsufficientFundsWithdrawal() throws InsufficientFundsWithdrawalException{
 
-
+		try{
 			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
@@ -421,15 +445,17 @@ public class BankTest {
 			 bs.createAccount(newAccount);
 			
 			 bs.withdraw(1, 700.00);
+		} catch(AccountDoesNotExistException | InvalidStartAccountAmountException |
+				ExceedDailyWithdrawalAmountException e) {
+			e.printStackTrace();
+		}
 			
 	}
 	
 	@Test(expected = exception.AccountDoesNotExistException.class)
-	public void testInvalidAccountWithdrawal() throws AccountDoesNotExistException, 
-			InvalidStartAccountAmountException, ExceedDailyWithdrawalAmountException, 
-			InsufficientFundsWithdrawalException{
+	public void testInvalidAccountWithdrawal() throws AccountDoesNotExistException {
 
-
+		try{
 			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
@@ -455,13 +481,16 @@ public class BankTest {
 			bs.createAccount(newAccount);
 			
 			bs.withdraw(89, 100.00);
+		} catch(InvalidStartAccountAmountException | ExceedDailyWithdrawalAmountException | 
+			InsufficientFundsWithdrawalException e) {
+			e.printStackTrace();
+		}
 			
 	}
 	
 	@Test
-	public void testTransferSuccess() throws AccountDoesNotExistException, 
-			InvalidStartAccountAmountException, InsufficientFundsToTransferException {
-
+	public void testTransferSuccess() {
+		try{
 			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
@@ -522,13 +551,16 @@ public class BankTest {
 			}
 			
 			assertEquals("Funds successfully transferred!", transferResult);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 			
 	}
 	
 	@Test(expected = exception.InsufficientFundsToTransferException.class)
-	public void testInsufficientFundsTransfer() throws AccountDoesNotExistException, 
-			InvalidStartAccountAmountException, InsufficientFundsToTransferException {
+	public void testInsufficientFundsTransfer() throws InsufficientFundsToTransferException {
 
+		try{
 			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
@@ -580,15 +612,17 @@ public class BankTest {
 			cal3.set(Calendar.YEAR, 2017);
 			
 			bs.fundTransfer(600.00, cal3.getTime(), newAccount2.getAccountNo(), newAccount.getAccountNo());
-			
+		} catch(AccountDoesNotExistException | InvalidStartAccountAmountException e) {
+			e.printStackTrace();
+		}
 			
 			
 	}
 	
 	@Test(expected = exception.AccountDoesNotExistException.class)
-	public void testAccountDoesNotExistForTransfer() throws AccountDoesNotExistException, 
-			InvalidStartAccountAmountException, InsufficientFundsToTransferException {
+	public void testAccountDoesNotExistForTransfer() throws AccountDoesNotExistException {
 
+		try{
 			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
@@ -640,12 +674,15 @@ public class BankTest {
 			cal3.set(Calendar.YEAR, 2017);
 			
 			 bs.fundTransfer(100.00, cal3.getTime(), 9, 10);
+		} catch(InvalidStartAccountAmountException | InsufficientFundsToTransferException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Test
-	public void testPrintTransactionLastTenSuccess() throws AccountDoesNotExistException, 
-	InvalidStartAccountAmountException, InsufficientAmountToDepositException{
+	public void testPrintTransactionLastTenSuccess() {
 
+		try{
 			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
@@ -717,14 +754,16 @@ public class BankTest {
 				assertEquals(newAccount.getTransactions().get(t), retrievalAccount.getTransactions().get(i));
 				--t;
 			}
+		} catch(AccountDoesNotExistException e) {
+			e.printStackTrace();
+		}
 			
 	}
 	
 	@Test(expected = exception.AccountDoesNotExistException.class)
 	public void testAccountDoesNotExistPrintTransactionLastTen() throws 
-				AccountDoesNotExistException, InvalidStartAccountAmountException,
-				InsufficientAmountToDepositException{
-
+				AccountDoesNotExistException {
+		
 			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
@@ -789,13 +828,13 @@ public class BankTest {
 			bs.getAccountRepo().getAccounts().add(newAccount);
 			
 			bs.printTransaction(10);
+		
 			
 	}
 	
 	@Test
-	public void testPrintTransactionPeriodSuccess() throws AccountDoesNotExistException, 
-	InvalidStartAccountAmountException, InsufficientAmountToDepositException{
-		
+	public void testPrintTransactionPeriodSuccess() {
+		try{
 			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
@@ -911,12 +950,14 @@ public class BankTest {
 			for(int i=0; i<8; i++) {
 				assertEquals(comparingTransactions.get(i), retrievalAccount.getTransactions().get(i));
 			}
-			
+		} catch(AccountDoesNotExistException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Test(expected = exception.AccountDoesNotExistException.class)
-	public void testInvalidAccountPrintTransactionPeriod() throws AccountDoesNotExistException, 
-	InvalidStartAccountAmountException, InsufficientAmountToDepositException{
+	public void testInvalidAccountPrintTransactionPeriod() throws AccountDoesNotExistException{
+		
 		
 			bs.createUser(TEST_USERNAME);
 
@@ -992,6 +1033,7 @@ public class BankTest {
 			toCal.set(Calendar.YEAR, 2017);
 			
 			 bs.printTransaction(21, fromCal.getTime(), toCal.getTime());
+		
 			
 	}
 	
