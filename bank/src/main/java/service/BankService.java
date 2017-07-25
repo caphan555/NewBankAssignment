@@ -101,15 +101,7 @@ public class BankService implements IBankService {
 		double accumulatedWithdrawal = 0.00;
 		
 		for(Transaction t:retrievedTransactions) {
-			if(t.getDate().after(fromDate) && t.getDate().before(toDate)) {
-				if(t.getDescription().equals(WITHDRAW)) {
-					accumulatedWithdrawal +=t.getAmount();
-				}
-			} else if(t.getDate().equals(fromDate) || t.getDate().equals(toDate)) {
-				if(t.getDescription().equals(WITHDRAW)) {
-					accumulatedWithdrawal +=t.getAmount();
-				}
-			}
+			accumulatedWithdrawal = cdh.checkWithdrawalTransactionsDates(t, fromDate, toDate, accumulatedWithdrawal);
 		}
 		
 		accumulatedWithdrawal += amount;
