@@ -18,28 +18,11 @@ public class CreateStandardTestUserAccount {
 	private static final String TEST_USERNAME = "John";
 	private static final  String DEPOSIT = "Deposit";
 	private static final String WITHDRAW= "Withdraw";
+	CreateUniqueNumber uniqueNumberCreator = new CreateUniqueNumber();
 	
 	public String createStandardTest(IBankService bs) {
 		try {
-			bs.createUser("John");
-
-			User user = bs.getUserRepo().getUsers().get(0);
-
-			CreateUniqueNumber uniqueNumberCreator = new CreateUniqueNumber();
-
-			int uniqueAId = uniqueNumberCreator.generateUniqueAccNum();
-			Account newAccount = new Account(0.00, new ArrayList<Transaction>(), uniqueAId, user);
-
-			// set date
-			Calendar cal = Calendar.getInstance();
-			cal.set(Calendar.MONTH, 4);
-			cal.set(Calendar.DATE, 3);
-			cal.set(Calendar.YEAR, 2017);
-			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId,
-					cal.getTime(), newAccount.getBalance() + 500.00);
-			newAccount.setBalance(newTransaction.getBalance());
-			newAccount.getTransactions().add(newTransaction);
+			Account newAccount = this.setUpNormalAccount(bs);
 
 		    return bs.createAccount(newAccount);
 		} catch (Exception e) {
@@ -89,26 +72,7 @@ public class CreateStandardTestUserAccount {
 
 	public Account setUpForPrintLastTenTransaction(IBankService bs) {
 		
-			bs.createUser(TEST_USERNAME);
-
-			User user = bs.getUserRepo().getUsers().get(0);
-
-			CreateUniqueNumber uniqueNumberCreator = new CreateUniqueNumber();
-
-			int uniqueAId = uniqueNumberCreator.generateUniqueAccNum();
-			Account newAccount = new Account(0.00, new ArrayList<Transaction>(), uniqueAId, user);
-
-			// set date
-			Calendar cal = Calendar.getInstance();
-			cal.set(Calendar.MONTH, 4);
-			cal.set(Calendar.DATE, 3);
-			cal.set(Calendar.YEAR, 2017);
-			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, cal.getTime(),
-					newAccount.getBalance() + 500.00);
-			
-			newAccount.setBalance(newTransaction.getBalance());
-			newAccount.getTransactions().add(newTransaction);
+		Account newAccount = this.setUpNormalAccount(bs);
 			
 			int month = 0;
 			int day = 13;
@@ -241,6 +205,30 @@ public class CreateStandardTestUserAccount {
 		}
 		
 		bs.getAccountRepo().getAccounts().add(newAccount);
+		
+		return newAccount;
+	}
+	
+	public Account setUpNormalAccount(IBankService bs) {
+		bs.createUser("John");
+
+		User user = bs.getUserRepo().getUsers().get(0);
+
+		uniqueNumberCreator = new CreateUniqueNumber();
+
+		int uniqueAId = uniqueNumberCreator.generateUniqueAccNum();
+		Account newAccount = new Account(0.00, new ArrayList<Transaction>(), uniqueAId, user);
+
+		// set date
+		Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.MONTH, 4);
+		cal.set(Calendar.DATE, 3);
+		cal.set(Calendar.YEAR, 2017);
+		int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
+		Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId,
+				cal.getTime(), newAccount.getBalance() + 500.00);
+		newAccount.setBalance(newTransaction.getBalance());
+		newAccount.getTransactions().add(newTransaction);
 		
 		return newAccount;
 	}
