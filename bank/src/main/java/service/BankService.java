@@ -17,6 +17,7 @@ import pojo.User;
 import repository.IAccountRepo;
 import repository.ITransactionRepo;
 import repository.IUserRepo;
+import utilities.CreateDateHelper;
 
 
 public class BankService implements IBankService {
@@ -92,23 +93,10 @@ public class BankService implements IBankService {
 		}
 		
 		List<Transaction> retrievedTransactions = retrievedAccount.getTransactions();
-		Calendar cal3 = Calendar.getInstance();
-		cal3.set(Calendar.MONTH, 7);
-		cal3.set(Calendar.DATE, 26);
-		cal3.set(Calendar.YEAR, 2017);
-		cal3.set(Calendar.HOUR_OF_DAY, 0);
-		cal3.set(Calendar.MINUTE, 0);
-		cal3.set(Calendar.SECOND, 0);
-		Date fromDate = cal3.getTime();
+		CreateDateHelper cdh = new CreateDateHelper();
 		
-		Calendar cal4 = Calendar.getInstance();
-		cal4.set(Calendar.MONTH, 7);
-		cal4.set(Calendar.DATE, 26);
-		cal4.set(Calendar.YEAR, 2017);
-		cal4.set(Calendar.HOUR_OF_DAY, 23);
-		cal4.set(Calendar.MINUTE, 59);
-		cal4.set(Calendar.SECOND, 59);
-		Date toDate = cal4.getTime();
+		Date fromDate = cdh.createDate(7, 26, 2017, 0, 0, 0);
+		Date toDate = cdh.createDate(7, 26, 2017, 23, 59, 59);
 		
 		double accumulatedWithdrawal = 0.00;
 		
