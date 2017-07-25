@@ -27,14 +27,11 @@ import repository.UserRepo;
 import service.BankService;
 import service.IBankService;
 import utilities.CreateStandardTestUserAccount;
-import utilities.CreateUniqueNumber;
 
 public class BankTest {
 	IBankService bs;
 	CreateStandardTestUserAccount cstua = new CreateStandardTestUserAccount();
 	private static final String SUCCESS = "success";
-	private static final String OPENING_NEW_ACCOUNT = "Opening a new account.";
-	private static final String CREDIT = "credit";
 	private static final String TEST_USERNAME = "John";
 	
 	@Before
