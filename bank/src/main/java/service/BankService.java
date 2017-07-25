@@ -25,6 +25,7 @@ public class BankService implements IBankService {
 	private IUserRepo userRepo;
 	private static final String SUCCESS = "success";
 	private static final String FAILURE = "failure";
+	private static final String WITHDRAW = "withdraw";
 	
 	
 	public BankService(IAccountRepo accountRepo, ITransactionRepo transactionRepo, IUserRepo userRepo) {
@@ -76,7 +77,6 @@ public class BankService implements IBankService {
 	}
 
 	public Account withdraw(int accountNumber, double amount) throws ExceedDailyWithdrawalAmountException, InsufficientFundsWithdrawalException, AccountDoesNotExistException{
-		
 		if(amount > 1000.00) {
 			throw new ExceedDailyWithdrawalAmountException();
 		}
@@ -91,6 +91,44 @@ public class BankService implements IBankService {
 			throw new InsufficientFundsWithdrawalException();
 		}
 		
+		List<Transaction> retrievedTransactions = retrievedAccount.getTransactions();
+		Calendar cal3 = Calendar.getInstance();
+		cal3.set(Calendar.MONTH, 7);
+		cal3.set(Calendar.DATE, 26);
+		cal3.set(Calendar.YEAR, 2017);
+		cal3.set(Calendar.HOUR_OF_DAY, 0);
+		cal3.set(Calendar.MINUTE, 0);
+		cal3.set(Calendar.SECOND, 0);
+		Date fromDate = cal3.getTime();
+		
+		Calendar cal4 = Calendar.getInstance();
+		cal4.set(Calendar.MONTH, 7);
+		cal4.set(Calendar.DATE, 26);
+		cal4.set(Calendar.YEAR, 2017);
+		cal4.set(Calendar.HOUR_OF_DAY, 23);
+		cal4.set(Calendar.MINUTE, 59);
+		cal4.set(Calendar.SECOND, 59);
+		Date toDate = cal4.getTime();
+		
+		double accumulatedWithdrawal = 0.00;
+		
+		for(Transaction t:retrievedTransactions) {
+			if(t.getDate().after(fromDate) && t.getDate().before(toDate)) {
+				if(t.getDescription().equals(WITHDRAW)) {
+					accumulatedWithdrawal +=t.getAmount();
+				}
+			} else if(t.getDate().equals(fromDate) || t.getDate().equals(toDate)) {
+				if(t.getDescription().equals(WITHDRAW)) {
+					accumulatedWithdrawal +=t.getAmount();
+				}
+			}
+		}
+		
+		accumulatedWithdrawal += amount;
+		
+		if(accumulatedWithdrawal > 1000.00) {
+			throw new ExceedDailyWithdrawalAmountException();
+		}
 		double newBalance = currentBalance - amount;
 		retrievedAccount.setBalance(newBalance);
 		
@@ -98,7 +136,7 @@ public class BankService implements IBankService {
 		cal2.set(Calendar.MONTH, 7);
 		cal2.set(Calendar.DATE, 26);
 		cal2.set(Calendar.YEAR, 2017);
-		Transaction withdrawTransaction = new Transaction("Withdraw", "debit", 300.00, 2, cal2.getTime(),
+		Transaction withdrawTransaction = new Transaction(WITHDRAW, "debit", amount, 2, cal2.getTime(),
 				retrievedAccount.getBalance());
 		retrievedAccount.getTransactions().add(withdrawTransaction);
 		this.getTransactionRepo().saveTransaction(withdrawTransaction);

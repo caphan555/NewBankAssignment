@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import exception.AccountDoesNotExistException;
@@ -28,6 +29,7 @@ import service.IBankService;
 import utilities.CreateUniqueNumber;
 
 public class BankTest {
+	IBankService bs;
 	private static final String SUCCESS = "success";
 	private static final  String DEPOSIT = "Deposit";
 	private static final String WITHDRAW= "Withdraw";
@@ -37,8 +39,8 @@ public class BankTest {
 	private static final String TEST_USERNAME = "John";
 	private static final String TEST_SECOND_USERNAME = "Ramal";
 	
-	@Test
-	public void testCreateUserSuccess() {
+	@Before
+	public void init() {
 		List<User> users = new ArrayList<>();
 		IUserRepo urp = new UserRepo(users);
 
@@ -48,7 +50,12 @@ public class BankTest {
 		List<Account> accounts = new ArrayList<>();
 		IAccountRepo arp = new AccountRepo(accounts);
 
-		IBankService bs = new BankService(arp, trp, urp);
+		bs = new BankService(arp, trp, urp);
+	}
+	
+	@Test
+	public void testCreateUserSuccess() {
+		
 
 		String result = bs.createUser(TEST_USERNAME);
 
@@ -57,16 +64,6 @@ public class BankTest {
 
 	@Test
 	public void testCannotCreateEmptyUser() {
-		List<User> users = new ArrayList<>();
-		IUserRepo urp = new UserRepo(users);
-
-		List<Transaction> transactions = new ArrayList<>();
-		ITransactionRepo trp = new TransactionRepo(transactions);
-
-		List<Account> accounts = new ArrayList<>();
-		IAccountRepo arp = new AccountRepo(accounts);
-
-		IBankService bs = new BankService(arp, trp, urp);
 
 		String result = bs.createUser("");
 
@@ -76,34 +73,11 @@ public class BankTest {
 	@Test(expected = java.lang.NullPointerException.class)
 	public void testCannotCreateNullUser() {
 
-			List<User> users = new ArrayList<>();
-			IUserRepo urp = new UserRepo(users);
-
-			List<Transaction> transactions = new ArrayList<>();
-			ITransactionRepo trp = new TransactionRepo(transactions);
-
-			List<Account> accounts = new ArrayList<>();
-			IAccountRepo arp = new AccountRepo(accounts);
-
-			IBankService bs = new BankService(arp, trp, urp);
-
 			bs.createUser(null);
 	}
 
 	@Test
 	public void testCreateAccountSuccess() throws InvalidStartAccountAmountException{
-
-		
-			List<User> users = new ArrayList<>();
-			IUserRepo urp = new UserRepo(users);
-
-			List<Transaction> transactions = new ArrayList<>();
-			ITransactionRepo trp = new TransactionRepo(transactions);
-
-			List<Account> accounts = new ArrayList<>();
-			IAccountRepo arp = new AccountRepo(accounts);
-
-			IBankService bs = new BankService(arp, trp, urp);
 
 			bs.createUser(TEST_USERNAME);
 
@@ -134,38 +108,13 @@ public class BankTest {
 	@Test(expected = NullPointerException.class)
 	public void testCannotCreateNullAccount() throws InvalidStartAccountAmountException{
 
-		
-			List<User> users = new ArrayList<>();
-			IUserRepo urp = new UserRepo(users);
-
-			List<Transaction> transactions = new ArrayList<>();
-			ITransactionRepo trp = new TransactionRepo(transactions);
-
-			List<Account> accounts = new ArrayList<>();
-			IAccountRepo arp = new AccountRepo(accounts);
-
-			IBankService bs = new BankService(arp, trp, urp);
-
 			bs.createAccount(null);
 		
-
 	}
 
 	@Test(expected = exception.InvalidStartAccountAmountException.class)
 	public void testInsufficientAmountToCreateAccount()
 			throws  InvalidStartAccountAmountException {
-
-		
-			List<User> users = new ArrayList<>();
-			IUserRepo urp = new UserRepo(users);
-
-			List<Transaction> transactions = new ArrayList<>();
-			ITransactionRepo trp = new TransactionRepo(transactions);
-
-			List<Account> accounts = new ArrayList<>();
-			IAccountRepo arp = new AccountRepo(accounts);
-
-			IBankService bs = new BankService(arp, trp, urp);
 
 			bs.createUser(TEST_USERNAME);
 
@@ -195,18 +144,6 @@ public class BankTest {
 
 	@Test
 	public void testAccountShowBalanceSuccess() throws InvalidStartAccountAmountException, AccountDoesNotExistException{
-
-		
-			List<User> users = new ArrayList<>();
-			IUserRepo urp = new UserRepo(users);
-
-			List<Transaction> transactions = new ArrayList<>();
-			ITransactionRepo trp = new TransactionRepo(transactions);
-
-			List<Account> accounts = new ArrayList<>();
-			IAccountRepo arp = new AccountRepo(accounts);
-
-			IBankService bs = new BankService(arp, trp, urp);
 
 			bs.createUser(TEST_USERNAME);
 
@@ -244,18 +181,6 @@ public class BankTest {
 	@Test(expected = exception.AccountDoesNotExistException.class)
 	public void testAccountDoesNotExist() throws AccountDoesNotExistException, InvalidStartAccountAmountException{
 
-		
-			ArrayList<User> users = new ArrayList<>();
-			IUserRepo urp = new UserRepo(users);
-
-			ArrayList<Transaction> transactions = new ArrayList<>();
-			ITransactionRepo trp = new TransactionRepo(transactions);
-
-			ArrayList<Account> accounts = new ArrayList<>();
-			IAccountRepo arp = new AccountRepo(accounts);
-
-			IBankService bs = new BankService(arp, trp, urp);
-
 			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
@@ -284,18 +209,6 @@ public class BankTest {
 	@Test
 	public void testDepositSuccess() throws AccountDoesNotExistException, 
 	InvalidStartAccountAmountException, InsufficientAmountToDepositException{
-
-		
-			List<User> users = new ArrayList<>();
-			IUserRepo urp = new UserRepo(users);
-
-			List<Transaction> transactions = new ArrayList<>();
-			ITransactionRepo trp = new TransactionRepo(transactions);
-
-			List<Account> accounts = new ArrayList<>();
-			IAccountRepo arp = new AccountRepo(accounts);
-
-			IBankService bs = new BankService(arp, trp, urp);
 
 			bs.createUser(TEST_USERNAME);
 
@@ -337,18 +250,6 @@ public class BankTest {
 	public void testInsufficientAmountToDeposit() throws AccountDoesNotExistException, 
 					InvalidStartAccountAmountException, InsufficientAmountToDepositException{
 
-		
-			List<User> users = new ArrayList<>();
-			IUserRepo urp = new UserRepo(users);
-
-			List<Transaction> transactions = new ArrayList<>();
-			ITransactionRepo trp = new TransactionRepo(transactions);
-
-			List<Account> accounts = new ArrayList<>();
-			IAccountRepo arp = new AccountRepo(accounts);
-
-			IBankService bs = new BankService(arp, trp, urp);
-
 			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
@@ -379,18 +280,6 @@ public class BankTest {
 	@Test(expected = exception.AccountDoesNotExistException.class)
 	public void testInvalidAccountToDeposit() throws AccountDoesNotExistException, 
 					InvalidStartAccountAmountException, InsufficientAmountToDepositException{
-
-		
-			List<User> users = new ArrayList<>();
-			IUserRepo urp = new UserRepo(users);
-
-			List<Transaction> transactions = new ArrayList<>();
-			ITransactionRepo trp = new TransactionRepo(transactions);
-
-			List<Account> accounts = new ArrayList<>();
-			IAccountRepo arp = new AccountRepo(accounts);
-
-			IBankService bs = new BankService(arp, trp, urp);
 
 			bs.createUser(TEST_USERNAME);
 
@@ -423,18 +312,6 @@ public class BankTest {
 	public void testWithdrawalSuccess() throws AccountDoesNotExistException, 
 			InvalidStartAccountAmountException, ExceedDailyWithdrawalAmountException, 
 			InsufficientFundsWithdrawalException{
-
-		
-			List<User> users = new ArrayList<>();
-			IUserRepo urp = new UserRepo(users);
-
-			List<Transaction> transactions = new ArrayList<>();
-			ITransactionRepo trp = new TransactionRepo(transactions);
-
-			List<Account> accounts = new ArrayList<>();
-			IAccountRepo arp = new AccountRepo(accounts);
-
-			IBankService bs = new BankService(arp, trp, urp);
 
 			bs.createUser(TEST_USERNAME);
 
@@ -477,18 +354,6 @@ public class BankTest {
 			InvalidStartAccountAmountException, ExceedDailyWithdrawalAmountException, 
 			InsufficientFundsWithdrawalException{
 
-		
-			List<User> users = new ArrayList<>();
-			IUserRepo urp = new UserRepo(users);
-
-			List<Transaction> transactions = new ArrayList<>();
-			ITransactionRepo trp = new TransactionRepo(transactions);
-
-			List<Account> accounts = new ArrayList<>();
-			IAccountRepo arp = new AccountRepo(accounts);
-
-			IBankService bs = new BankService(arp, trp, urp);
-
 			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
@@ -505,15 +370,23 @@ public class BankTest {
 			cal.set(Calendar.YEAR, 2017);
 			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
 			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, cal.getTime(),
-					newAccount.getBalance() + 500.00);
+					newAccount.getBalance() + 5000.00);
 			
 			newAccount.setBalance(newTransaction.getBalance());
 			newAccount.getTransactions().add(newTransaction);
 			
 			
+			
+			
+			
 			bs.createAccount(newAccount);
 			
-			bs.withdraw(1, 2000.00);
+			//Setting some withdrawals on the same day
+			for(int i=0; i<=2; ++i) {
+				bs.withdraw(1, 100.00);
+			}
+			
+			bs.withdraw(1, 800.00);
 			
 	}
 	
@@ -522,17 +395,6 @@ public class BankTest {
 			InvalidStartAccountAmountException, ExceedDailyWithdrawalAmountException, 
 			InsufficientFundsWithdrawalException{
 
-		
-			List<User> users = new ArrayList<>();
-			IUserRepo urp = new UserRepo(users);
-
-			List<Transaction> transactions = new ArrayList<>();
-			ITransactionRepo trp = new TransactionRepo(transactions);
-
-			List<Account> accounts = new ArrayList<>();
-			IAccountRepo arp = new AccountRepo(accounts);
-
-			IBankService bs = new BankService(arp, trp, urp);
 
 			bs.createUser(TEST_USERNAME);
 
@@ -558,7 +420,7 @@ public class BankTest {
 			
 			 bs.createAccount(newAccount);
 			
-			 bs.withdraw(1, 800.00);
+			 bs.withdraw(1, 700.00);
 			
 	}
 	
@@ -567,17 +429,6 @@ public class BankTest {
 			InvalidStartAccountAmountException, ExceedDailyWithdrawalAmountException, 
 			InsufficientFundsWithdrawalException{
 
-		
-			List<User> users = new ArrayList<>();
-			IUserRepo urp = new UserRepo(users);
-
-			List<Transaction> transactions = new ArrayList<>();
-			ITransactionRepo trp = new TransactionRepo(transactions);
-
-			List<Account> accounts = new ArrayList<>();
-			IAccountRepo arp = new AccountRepo(accounts);
-
-			IBankService bs = new BankService(arp, trp, urp);
 
 			bs.createUser(TEST_USERNAME);
 
@@ -610,18 +461,6 @@ public class BankTest {
 	@Test
 	public void testTransferSuccess() throws AccountDoesNotExistException, 
 			InvalidStartAccountAmountException, InsufficientFundsToTransferException {
-
-		
-			List<User> users = new ArrayList<>();
-			IUserRepo urp = new UserRepo(users);
-
-			List<Transaction> transactions = new ArrayList<>();
-			ITransactionRepo trp = new TransactionRepo(transactions);
-
-			List<Account> accounts = new ArrayList<>();
-			IAccountRepo arp = new AccountRepo(accounts);
-
-			IBankService bs = new BankService(arp, trp, urp);
 
 			bs.createUser(TEST_USERNAME);
 
@@ -690,18 +529,6 @@ public class BankTest {
 	public void testInsufficientFundsTransfer() throws AccountDoesNotExistException, 
 			InvalidStartAccountAmountException, InsufficientFundsToTransferException {
 
-		
-			List<User> users = new ArrayList<>();
-			IUserRepo urp = new UserRepo(users);
-
-			List<Transaction> transactions = new ArrayList<>();
-			ITransactionRepo trp = new TransactionRepo(transactions);
-
-			List<Account> accounts = new ArrayList<>();
-			IAccountRepo arp = new AccountRepo(accounts);
-
-			IBankService bs = new BankService(arp, trp, urp);
-
 			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
@@ -762,18 +589,6 @@ public class BankTest {
 	public void testAccountDoesNotExistForTransfer() throws AccountDoesNotExistException, 
 			InvalidStartAccountAmountException, InsufficientFundsToTransferException {
 
-		
-			List<User> users = new ArrayList<>();
-			IUserRepo urp = new UserRepo(users);
-
-			List<Transaction> transactions = new ArrayList<>();
-			ITransactionRepo trp = new TransactionRepo(transactions);
-
-			List<Account> accounts = new ArrayList<>();
-			IAccountRepo arp = new AccountRepo(accounts);
-
-			IBankService bs = new BankService(arp, trp, urp);
-
 			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
@@ -830,17 +645,6 @@ public class BankTest {
 	@Test
 	public void testPrintTransactionLastTenSuccess() throws AccountDoesNotExistException, 
 	InvalidStartAccountAmountException, InsufficientAmountToDepositException{
-		
-			List<User> users = new ArrayList<>();
-			IUserRepo urp = new UserRepo(users);
-
-			List<Transaction> transactions = new ArrayList<>();
-			ITransactionRepo trp = new TransactionRepo(transactions);
-
-			List<Account> accounts = new ArrayList<>();
-			IAccountRepo arp = new AccountRepo(accounts);
-
-			IBankService bs = new BankService(arp, trp, urp);
 
 			bs.createUser(TEST_USERNAME);
 
@@ -920,17 +724,6 @@ public class BankTest {
 	public void testAccountDoesNotExistPrintTransactionLastTen() throws 
 				AccountDoesNotExistException, InvalidStartAccountAmountException,
 				InsufficientAmountToDepositException{
-		
-			List<User> users = new ArrayList<>();
-			IUserRepo urp = new UserRepo(users);
-
-			List<Transaction> transactions = new ArrayList<>();
-			ITransactionRepo trp = new TransactionRepo(transactions);
-
-			List<Account> accounts = new ArrayList<>();
-			IAccountRepo arp = new AccountRepo(accounts);
-
-			IBankService bs = new BankService(arp, trp, urp);
 
 			bs.createUser(TEST_USERNAME);
 
@@ -1003,17 +796,6 @@ public class BankTest {
 	public void testPrintTransactionPeriodSuccess() throws AccountDoesNotExistException, 
 	InvalidStartAccountAmountException, InsufficientAmountToDepositException{
 		
-			List<User> users = new ArrayList<>();
-			IUserRepo urp = new UserRepo(users);
-
-			List<Transaction> transactions = new ArrayList<>();
-			ITransactionRepo trp = new TransactionRepo(transactions);
-
-			List<Account> accounts = new ArrayList<>();
-			IAccountRepo arp = new AccountRepo(accounts);
-
-			IBankService bs = new BankService(arp, trp, urp);
-
 			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
@@ -1054,7 +836,8 @@ public class BankTest {
 		        depositCal.set(Calendar.SECOND,second);
 				
 				int uniqueDepositId = uniqueNumberCreator.generateUniqueTransactionId();
-				Transaction deposits = new Transaction(DEPOSIT, DEBIT, deposit, uniqueDepositId, depositCal.getTime(), newAccount.getBalance() + deposit);
+				Transaction deposits = new Transaction(DEPOSIT, DEBIT, deposit, uniqueDepositId,
+						depositCal.getTime(), newAccount.getBalance() + deposit);
 				double newBalance = newAccount.getBalance() + deposit;
 				newAccount.setBalance(newBalance);
 				newAccount.getTransactions().add(deposits);
@@ -1135,17 +918,6 @@ public class BankTest {
 	public void testInvalidAccountPrintTransactionPeriod() throws AccountDoesNotExistException, 
 	InvalidStartAccountAmountException, InsufficientAmountToDepositException{
 		
-			List<User> users = new ArrayList<>();
-			IUserRepo urp = new UserRepo(users);
-
-			List<Transaction> transactions = new ArrayList<>();
-			ITransactionRepo trp = new TransactionRepo(transactions);
-
-			List<Account> accounts = new ArrayList<>();
-			IAccountRepo arp = new AccountRepo(accounts);
-
-			IBankService bs = new BankService(arp, trp, urp);
-
 			bs.createUser(TEST_USERNAME);
 
 			User user = bs.getUserRepo().getUsers().get(0);
