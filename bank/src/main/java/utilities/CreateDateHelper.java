@@ -21,16 +21,16 @@ public class CreateDateHelper {
 	}
 	
 	public double checkWithdrawalTransactionsDates(Transaction t, Date fromDate, Date toDate, double accumulatedWithdrawal) {
+		double returningWithdrawal = accumulatedWithdrawal;
 		if(t.getDate().after(fromDate) && t.getDate().before(toDate)) {
 			if(t.getDescription().equals(WITHDRAW)) {
-				accumulatedWithdrawal +=t.getAmount();
+				returningWithdrawal +=t.getAmount();
 			}
-		} else if(t.getDate().equals(fromDate) || t.getDate().equals(toDate)) {
-			if(t.getDescription().equals(WITHDRAW)) {
-				accumulatedWithdrawal +=t.getAmount();
-			}
+		} else if((t.getDate().equals(fromDate) || t.getDate().equals(toDate)) && (t.getDescription().equals(WITHDRAW))) {
+			
+				returningWithdrawal +=t.getAmount();
 		}
 		
-		return accumulatedWithdrawal;
+		return returningWithdrawal;
 	}
 }

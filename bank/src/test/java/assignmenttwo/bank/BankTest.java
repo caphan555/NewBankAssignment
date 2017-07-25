@@ -96,28 +96,8 @@ public class BankTest {
 	public void testInsufficientAmountToCreateAccount() throws  InvalidStartAccountAmountException{
 
 		
-			bs.createUser(TEST_USERNAME);
-
-			User user = bs.getUserRepo().getUsers().get(0);
-
-			CreateUniqueNumber uniqueNumberCreator = new CreateUniqueNumber();
-
-			int uniqueAId = uniqueNumberCreator.generateUniqueAccNum();
-			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
-
-			// set date
-			Calendar cal = Calendar.getInstance();
-			cal.set(Calendar.MONTH, 4);
-			cal.set(Calendar.DATE, 3);
-			cal.set(Calendar.YEAR, 2017);
-			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 10.00, uniqueTId, cal.getTime(),
-					newAccount.getBalance() + 10.00);
-			newAccount.setBalance(newTransaction.getBalance());
-			newAccount.getTransactions().add(newTransaction);
-
-			bs.createAccount(newAccount);
-		
+		Account newAccount =	cstua.createVariantAccount(bs, 10.00, 10.00);
+		bs.createAccount(newAccount);
 	}
 
 	@Test
@@ -216,27 +196,7 @@ public class BankTest {
 	public void testExceedDailyLimitWithdrawal() throws ExceedDailyWithdrawalAmountException{
 
 		try{
-			bs.createUser(TEST_USERNAME);
-
-			User user = bs.getUserRepo().getUsers().get(0);
-
-			CreateUniqueNumber uniqueNumberCreator = new CreateUniqueNumber();
-
-			int uniqueAId = uniqueNumberCreator.generateUniqueAccNum();
-			Account newAccount = new Account(0.00, new ArrayList<>(), uniqueAId, user);
-
-			// set date
-			Calendar cal = Calendar.getInstance();
-			cal.set(Calendar.MONTH, 4);
-			cal.set(Calendar.DATE, 3);
-			cal.set(Calendar.YEAR, 2017);
-			int uniqueTId = uniqueNumberCreator.generateUniqueTransactionId();
-			Transaction newTransaction = new Transaction(OPENING_NEW_ACCOUNT, CREDIT, 500.00, uniqueTId, cal.getTime(),
-					newAccount.getBalance() + 5000.00);
-			
-			newAccount.setBalance(newTransaction.getBalance());
-			newAccount.getTransactions().add(newTransaction);
-			
+			Account newAccount = cstua.createVariantAccount(bs, 5000.00, 500.00);
 			
 			
 			
